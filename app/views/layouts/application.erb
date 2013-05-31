@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title><%= @title ? "#{@title} - #{APP_CONFIG[:site_title]}": APP_CONFIG[:site_title] %></title>
+    <meta name="keywords" content="<%=@keywords || APP_CONFIG[:site_keywords]%>" />
+    <meta name="description" content="<%= @description || APP_CONFIG[:site_description] %>">
+    <meta name="author" content="HelloQidi">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+
+    <%= stylesheet_link_tag '/base' %>
+    <%= yield_content :stylesheets %>
+
+  </head>
+  <body>
+    <div id="flash-notice"></div>
+    <div class="header">
+
+    </div><!-- header -->
+
+    <div class="nav">
+    </div><!-- nav -->
+
+    <div class="wrap clearfix">
+      <%= yield %>
+    </div><!-- content -->
+
+    <div class="footer">
+    </div><!-- footer -->
+
+    <%= javascript_include_tag 'jquery', 'jquery-ujs', 'application' %>
+    <%= yield_content :javascripts %>
+
+    <% if flash[:notice] %>
+      <script type="text/javascript">
+        $('div#flash-notice').html('<%= flash[:notice] %>').show().fadeOut(3000);
+      </script>
+    <% end %>
+
+  </body>
+</html>

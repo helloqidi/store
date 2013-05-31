@@ -1,0 +1,12 @@
+development: &default
+  session_secret: '1234567890'
+  site_url: 'http://localhost:3000'
+  site_title: 'test网站'
+  site_description: '个人网站'
+  
+test: 
+  <<: *default
+
+production:
+  <<: *default
+  site_url: 'http://www.test.com'
