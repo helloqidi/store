@@ -11,5 +11,7 @@ db/*.db
 *.swn
 *.pid
 *.rvmrc
+*.ruby-version
+*.ruby-gemset
 config/database.yml
 config/app_config.yml
