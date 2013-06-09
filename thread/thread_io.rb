@@ -20,7 +20,7 @@ def fetch_url(thread_count)
 end
 
 Benchmark.bm(20) do |bm|
-  [1, 2, 3, 5, 6, 10,15,30].each do |thread_count|
+  [1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24].each do |thread_count|
       bm.report("with #{thread_count} threads") do
         fetch_url(thread_count)
       end
