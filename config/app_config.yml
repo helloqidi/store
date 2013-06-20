@@ -1,0 +1,13 @@
+development: &default
+  session_secret: "1234567890"
+  site_url: "http://localhost:3000"
+  site_title: "yundongke网站"
+  site_description: "这是一个个人网站"
+  site_keywords: "运动,球类"
+  
+test: 
+  <<: *default
+
+production:
+  <<: *default
+  site_url: "http://www.yundongke2013.com"
