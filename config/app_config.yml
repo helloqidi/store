@@ -10,5 +10,5 @@ test:
 production:
   <<: *default
   site_title: "运动客"
-  site_description: "做专业的体育用品网站"
-  site_keywords: "运动,球类"
+  site_description: "做专业的"
+  site_keywords: "运动"
