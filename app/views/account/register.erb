@@ -1,0 +1,17 @@
+<div>
+  欢迎加入
+</div>
+
+<div>
+  <%form_for :user,url(:account,:create) do |f|%>
+    <label for="email">邮箱</label>
+    <%=f.text_field :email%>
+    <label for="password">密码</label>
+    <%=f.text_field :password%>
+    <label for="password_confirmation">确认密码</label>
+    <%=f.text_field :password_confirmation%>
+    <label for="name">名号</label>
+    <%=f.text_field :name%>
+    <%=f.submit "注册", :class=>"sure_ad mt-10 button green"%>
+  <%end%>
+</div>

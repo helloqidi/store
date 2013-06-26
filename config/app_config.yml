@@ -1,11 +1,14 @@
 development: &default
   session_secret: "1234567890"
-  site_title: "运动客"
-  site_description: "做专业的体育用品网站"
-  site_keywords: "运动,球类"
+  site_title: "网站标题"
+  site_description: "网站描述"
+  site_keywords: "网站关键词"
   
 test: 
   <<: *default
 
 production:
   <<: *default
+  site_title: "运动客"
+  site_description: "做专业的体育用品网站"
+  site_keywords: "运动,球类"
