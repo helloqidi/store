@@ -3,20 +3,20 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title><%= @title ? "#{@title} - #{APP_CONFIG[:site_title]}": APP_CONFIG[:site_title] %></title>
-    <meta name="keywords" content="<%=@keywords || APP_CONFIG[:site_keywords]%>" />
+    <meta name="keywords" content="<%= @keywords || APP_CONFIG[:site_keywords]%>" />
     <meta name="description" content="<%= @description || APP_CONFIG[:site_description] %>">
     <meta name="author" content="HelloQidi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
-    <%=partial "base/meta_css"%>
+    <%= partial "base/meta_css"%>
     <%= yield_content :stylesheets %>
 
   </head>
   <body>
     <div class="container">
-      <%=partial "base/header"%>
+      <%= partial "base/header"%>
       <div id="flash-notice"></div>
 
 

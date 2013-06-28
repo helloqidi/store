@@ -1,5 +1,9 @@
-<% content_for :jquery do %>
-  alert("1");
+<% content_for :javascripts do %>
+  <script type="text/javascript">
+  $(function(){
+      alert("1");
+  });
+  </script>
 <% end %>
 
 <div>

@@ -7,6 +7,7 @@ gem 'padrino', '~> 0.11'
 
 
 ## Component requirements
+gem 'erubis', '~> 2.7.0'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'mysql2'
 
