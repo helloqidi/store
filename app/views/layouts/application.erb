@@ -27,10 +27,18 @@
       <%=partial "base/meta_javascript"%>
       <%= yield_content :javascripts %>
 
+      <script type="text/javascript">
+        $(function(){
+          store.initial();
+          <%= yield_content :jquery %>
+        });
+      </script>
+
+
       <% if flash[:notice] %>
         <script type="text/javascript">
           $('div#flash-notice').html('<%= flash[:notice] %>').show().fadeOut(3000);
-          </script>
+        </script>
       <% end %>
 
     </div>

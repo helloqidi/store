@@ -1,17 +1,15 @@
-<div>
-  欢迎加入
-</div>
+<% content_for :jquery do %>
+  alert("1");
+<% end %>
 
 <div>
-  <%form_for :user,url(:account,:create) do |f|%>
-    <label for="email">邮箱</label>
-    <%=f.text_field :email%>
-    <label for="password">密码</label>
-    <%=f.text_field :password%>
-    <label for="password_confirmation">确认密码</label>
-    <%=f.text_field :password_confirmation%>
-    <label for="name">名号</label>
-    <%=f.text_field :name%>
-    <%=f.submit "注册", :class=>"sure_ad mt-10 button green"%>
-  <%end%>
+  <form class="form-signin">
+    <h2 class="form-signin-heading mb-10">欢迎加入</h2>
+    <input type="text" class="input-block-level" placeholder="邮箱">
+    <input type="password" class="input-block-level" placeholder="密码">
+    <label class="checkbox mb-10">
+      <input type="checkbox" value="remember-me"> 记住我
+    </label>
+    <button class="btn btn-large btn-primary" type="submit">注册</button>
+  </form>
 </div>

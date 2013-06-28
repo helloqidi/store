@@ -11,4 +11,9 @@ Store::App.controllers :account do
   post :create do
   end
 
+  #登录页面
+  get :login do
+    render "account/login"
+  end
+
 end
