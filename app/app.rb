@@ -47,16 +47,28 @@ module Store
     #   end
     #
 
-    ##
-    # You can manage errors like:
-    #
-    #   error 404 do
-    #     render 'errors/404'
-    #   end
-    #
-    #   error 505 do
-    #     render 'errors/505'
-    #   end
-    #
+    error ActiveRecord::RecordNotFound do
+      halt 404
+    end
+  
+    #未授权(比如微博授权失败等)
+    error 401 do
+      render 'error/401'
+    end
+    
+    #禁止访问(一般用于自己项目的权限限制)
+    error 403 do
+      render 'error/403'
+    end
+    
+    #无法找到
+    error 404 do
+      render 'error/404', :layout => 'application'
+    end
+  
+    #内部服务器错误
+    error 500 do
+      render 'error/500'
+    end
   end
 end

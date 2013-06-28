@@ -11,16 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 1) do
+ActiveRecord::Schema.define(:version => 3) do
 
   create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "email"
-    t.string   "crypted_password"
-    t.integer  "role"
-    t.string   "ip"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.string   "name",             :limit => 100, :null => false
+    t.string   "email",            :limit => 100, :null => false
+    t.string   "crypted_password",                :null => false
+    t.integer  "role",             :limit => 3,   :null => false
+    t.string   "ip",               :limit => 100
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -39,7 +39,7 @@ body{
   margin: 60px 0;
 }
 .form-signin {        
-  max-width: 300px;        
+  max-width: 400px;        
   padding: 19px 29px 29px;        
   margin: 0 auto 20px;        
   background-color: #fff;        
@@ -58,6 +58,11 @@ body{
   height: auto;        
   margin-bottom: 15px;        
   padding: 7px 9px;      
+}
+
+/*参考bootstrap*/
+.store-text-error {
+  color: #b94a48;
 }
 
 /*normal page end*/

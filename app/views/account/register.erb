@@ -1,19 +1,15 @@
-<% content_for :javascripts do %>
-  <script type="text/javascript">
-  $(function(){
-      alert("1");
-  });
-  </script>
+<% content_for :jquery do %>
+  store.validateRegisterForm();
 <% end %>
 
 <div>
-  <form class="form-signin">
+  <% form_for :user,url(:account,:register_create),:class=>"form-signin",:id=>"register-form" do |f| %>
     <h2 class="form-signin-heading mb-10">欢迎加入</h2>
-    <input type="text" class="input-block-level" placeholder="邮箱">
-    <input type="password" class="input-block-level" placeholder="密码">
-    <label class="checkbox mb-10">
-      <input type="checkbox" value="remember-me"> 记住我
-    </label>
-    <button class="btn btn-large btn-primary" type="submit">注册</button>
-  </form>
+    <%= f.text_field :email,:class=>"input-large",:placeholder=>"邮箱" %>
+    <%= f.password_field :password,:class=>"input-large",:placeholder=>"密码" %>
+    <%= f.password_field :password_confirmation,:class=>"input-large",:placeholder=>"确认密码" %>
+    <%= f.text_field :name,:class=>"input-large",:placeholder=>"昵称" %>
+    <br />
+    <%= f.submit "注册",:class=>"btn btn-large btn-primary" %>
+  <% end %>
 </div>
