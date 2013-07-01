@@ -10,6 +10,3 @@ db/*.db
 *.swo
 *.swn
 *.pid
-*.rvmrc
-*.ruby-version
-*.ruby-gemset

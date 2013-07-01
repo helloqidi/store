@@ -23,7 +23,8 @@ end
 ## Development requirements
 group :development do
   gem 'thin'
-  gem 'capistrano'
+  gem 'capistrano','~> 2.15.0'
+#gem 'rvm-capistrano', require: false
 end
 
 
