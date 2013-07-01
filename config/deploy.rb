@@ -3,9 +3,9 @@
 # 执行bundle install
 require 'bundler/capistrano'
 
-#require "rvm/capistrano"
-#set :rvm_ruby_string, "ruby-2.0.0-p195@store"
-#set :rvm_type, :user
+require "rvm/capistrano"
+set :rvm_ruby_string, "ruby-2.0.0-p195"
+set :rvm_type, :user
 
 # set this to keep from missing any password prompts
 default_run_options[:pty] = true

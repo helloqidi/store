@@ -24,7 +24,7 @@ end
 group :development do
   gem 'thin'
   gem 'capistrano','~> 2.15.0'
-#gem 'rvm-capistrano', require: false
+  gem 'rvm-capistrano', require: false
 end
 
 
