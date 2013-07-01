@@ -70,6 +70,9 @@ task :padrino_migrate_database, :roles => :app do
   run "cd #{deploy_to}/current/; bundle exec padrino rake ar:migrate -e production"
 end
 
+#每次deploy后,执行migrate
+after "deploy:symlink", "padrino_migrate_database"
+
 desc "Padrino create database seed"
 task :padrino_create_seed, :roles => :app do
   run "cd #{deploy_to}/current/; bundle exec padrino rake db:seed -e production"
