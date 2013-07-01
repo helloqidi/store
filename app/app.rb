@@ -5,6 +5,7 @@ module Store
     register Padrino::Mailer
     register Padrino::Helpers
 
+    #缺省key为rack.session
     enable :sessions
 
     ##

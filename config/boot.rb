@@ -49,8 +49,8 @@ end
 
 
 # load project config
-# APP_CONFIG[:site_title]
-APP_CONFIG = YAML.load_file(File.expand_path("#{PADRINO_ROOT}/config", __FILE__) + '/app_config.yml')[PADRINO_ENV].symbolize_keys
+# Settings[:site_title]
+Settings = YAML.load_file(File.expand_path("#{PADRINO_ROOT}/config", __FILE__) + '/app_config.yml')[PADRINO_ENV].symbolize_keys
 
 
 

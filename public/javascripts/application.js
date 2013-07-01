@@ -101,3 +101,44 @@ store.versionIEWarn=function(text){
     store.showAlertInfo("您正在使用 IE7 浏览器，建议升级为IE9以上版本！");
   };*/
 };
+
+
+/*
+ * 验证登录表单
+ * */
+store.validateLoginForm=function(){
+  /* 表单验证 */
+  $('#login-form').validate({
+    rules:{
+      "email":{
+        required: true,
+        email: true,
+        minlength: 3,
+        maxlength: 100
+      },
+      "password":{
+        required: true,
+        minlength: 4,
+        maxlength: 40
+      }
+    },
+    messages: {
+      "email":{
+        required: "邮箱不能为空",
+        email: "邮箱格式不正确",
+        minlength: "最少3个字符",
+        maxlength: "最多100个字符"
+      },
+      "password":{
+        required: "密码不能为空",
+        minlength: "最少4个字符",
+        maxlength: "最多40个字符"
+      }
+    },
+    errorClass: "help-inline store-text-error",
+    submitHandler: function(form) {
+      $(form).ajaxSubmit({});
+    }
+  });
+};
+

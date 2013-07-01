@@ -1,5 +1,5 @@
 development: &default
-  session_secret: "1234567890"
+  session_secret: "1234567890abcdefghigklmnsdfewiruewpo-12i0.dsas90dojidco2"
   site_title: "网站标题"
   site_description: "网站描述"
   site_keywords: "网站关键词"

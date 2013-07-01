@@ -32,13 +32,38 @@ class User < ActiveRecord::Base
 
   #验证email和密码
   def self.authenticate(email, password)
-    user=where(:email=>email).take if email.present?
-    user && user.has_password?(password) ? account : nil
+    user=where(:email=>email).first if email.present?
+    user && user.has_password?(password) ? user : nil
   end
-
   def has_password?(password)
     ::BCrypt::Password.new(self.crypted_password) == password
   end
+
+  #加密cookie信息
+  def encrypt_cookie_value
+    cipher = OpenSSL::Cipher::AES.new(256, :CBC)
+    cipher.encrypt
+    cipher.key = Settings[:session_secret]
+    Base64.encode64(cipher.update("#{id} #{crypted_password}") + cipher.final)
+  end
+  #校验cookie信息
+  def self.validate_cookie(encrypted_value)
+    user_id, crypted_password = decrypt_cookie_value(encrypted_value)
+    if (user = User.find_by_id(user_id)) && (user.crypted_password = crypted_password)
+      return user
+    end
+  end
+  def self.decrypt_cookie_value(encrypted_value)
+    decipher = OpenSSL::Cipher::AES.new(256, :CBC)
+    decipher.decrypt
+    decipher.key = Settings[:session_secret]
+    plain = decipher.update(Base64.decode64(encrypted_value)) + decipher.final
+    id, crypted_password = plain.split
+    return id.to_i, crypted_password
+  rescue
+    return 0, ""
+  end
+
 
   private
   def encrypt_password

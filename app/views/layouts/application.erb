@@ -2,9 +2,9 @@
 <html lang="zh-CN">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title><%= @title ? "#{@title} - #{APP_CONFIG[:site_title]}": APP_CONFIG[:site_title] %></title>
-    <meta name="keywords" content="<%= @keywords || APP_CONFIG[:site_keywords]%>" />
-    <meta name="description" content="<%= @description || APP_CONFIG[:site_description] %>">
+    <title><%= @title ? "#{@title} - #{Settings[:site_title]}": Settings[:site_title] %></title>
+    <meta name="keywords" content="<%= @keywords || Settings[:site_keywords]%>" />
+    <meta name="description" content="<%= @description || Settings[:site_description] %>">
     <meta name="author" content="HelloQidi">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
