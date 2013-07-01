@@ -73,6 +73,7 @@ end
 #每次deploy后,执行migrate
 after "deploy:symlink", "padrino_migrate_database"
 
+#注:此命令自动化部署不行.需要ssh到服务器上,增加此文件执行权限,再手动执行db:seed命令.
 desc "Padrino create database seed"
 task :padrino_create_seed, :roles => :app do
   run "cd #{deploy_to}/current/; bundle exec padrino rake db:seed -e production"
