@@ -69,3 +69,8 @@ desc "Padrino migrate database"
 task :padrino_migrate_database, :roles => :app do
   run "cd #{deploy_to}/current/; bundle exec padrino rake ar:migrate -e production"
 end
+
+desc "Padrino create database seed"
+task :padrino_create_seed, :roles => :app do
+  run "cd #{deploy_to}/current/; bundle exec padrino rake db:seed -e production"
+end
