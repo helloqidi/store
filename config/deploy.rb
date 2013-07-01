@@ -59,3 +59,13 @@ namespace :deploy do
     run "cd #{deploy_to}/current/; ./rainbows.sh restart"
   end
 end
+
+desc "Padrino create database"
+task :padrino_create_database, :roles => :app do
+  run "cd #{deploy_to}/current/; bundle exec padrino rake ar:create -e production"
+end
+
+desc "Padrino migrate database"
+task :padrino_migrate_database, :roles => :app do
+  run "cd #{deploy_to}/current/; bundle exec padrino rake ar:migrate -e production"
+end
