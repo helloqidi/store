@@ -23,6 +23,7 @@ end
 ## Development requirements
 group :development do
   gem 'thin'
+  gem 'capistrano'
 end
 
 
