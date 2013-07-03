@@ -1,5 +1,10 @@
+<% if flash[:error] %>
+  <script type="text/javascript">
+    store.showErrorInfo("<%=flash[:error]%>");
+  </script>
+<% end %>
 <% if flash[:notice] %>
   <script type="text/javascript">
-    store.showAlertInfo("<%=flash[:notice]%>");
+    store.showSuccessInfo("<%=flash[:notice]%>");
   </script>
 <% end %>

@@ -1,0 +1,14 @@
+<taconite>
+<% if @success %>
+  <replace select="#user-avatar">
+    <%= image_tag(@user.avatar.url(:big)+"?v=#{rand(100)}",:id=>"user-avatar") %>
+  </replace>
+  <eval>
+    store.showSuccessInfo("<%=@note%>");
+  </eval>
+<%else%>
+  <eval>
+    store.showErrorInfo("<%=@note%>");
+  </eval>
+<%end%>
+</taconite>

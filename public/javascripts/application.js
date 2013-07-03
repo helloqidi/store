@@ -85,9 +85,25 @@ store.validateRegisterForm=function(){
 /*
  * 显示头部的alert info信息
  * */
-store.showAlertInfo=function(text){
-  $("#alert-info").append("<strong>"+text+"</strong>").show();
+store.showErrorInfo=function(text){
+  store.showInfo('error',text);
 };
+store.showSuccessInfo=function(text){
+  store.showInfo("success",text);
+};
+//switch_info包括:success,error
+store.showInfo=function(switch_info,text){
+  alert_info_id_name="alert-info";
+  $("#"+alert_info_id_name+" strong").text(text);
+
+  if(switch_info=="success"){
+    $("#"+alert_info_id_name+"").removeClass("alert-error").addClass("alert-success").show();
+  };
+  if(switch_info=="error"){
+    $("#"+alert_info_id_name+"").removeClass("alert-success").addClass("alert-error").show();
+  };
+  
+}
 
 /*
  * 判断浏览器版本,对IE6，7给予提示
@@ -142,3 +158,41 @@ store.validateLoginForm=function(){
   });
 };
 
+/*
+ * 验证修改个人资料表单
+ * */
+store.validateProfileForm=function(){
+  /* 表单验证 */
+  $('#profile-form').validate({
+    rules:{
+      "user[email]":{
+        required: true,
+        email: true,
+        minlength: 3,
+        maxlength: 100
+      },
+      "user[name]":{
+        required: true,
+        minlength: 2,
+        maxlength: 100        
+      }
+    },
+    messages: {
+      "user[email]":{
+        required: "邮箱不能为空",
+        email: "邮箱格式不正确",
+        minlength: "最少3个字符",
+        maxlength: "最多100个字符"
+      },
+      "user[name]":{
+        required: "昵称不能为空",
+        minlength: "最少2个字符",
+        maxlength: "最多100个字符"
+      }
+    },
+    errorClass: "help-inline store-text-error",
+    submitHandler: function(form) {
+      $(form).ajaxSubmit({});
+    }
+  });
+};

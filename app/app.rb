@@ -5,6 +5,9 @@ module Store
     register Padrino::Mailer
     register Padrino::Helpers
 
+    # 引用共用方法
+    include HelpersAuth
+
     #缺省key为rack.session
     enable :sessions
 

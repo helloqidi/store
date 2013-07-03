@@ -2,6 +2,8 @@
 require 'bcrypt'
 class User < ActiveRecord::Base
   attr_accessor :password, :password_confirmation
+  #头像
+  mount_uploader :avatar, AvatarUploader
 
   ##关系
 
@@ -20,8 +22,8 @@ class User < ActiveRecord::Base
   validates :email, :presence=>true, :uniqueness=>{:case_sensitive=>false} ,:length=>{:in=>3..100 }, :format=>{:with=>/\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i}
   validates :name, :uniqueness=>true, :length=>{:in=>2..100 }
   #confirmation自动验证字段xxx与字段xxx_confirmation字段内容相同
-  validates :password, :presence=>true, :confirmation=>true, :length=>{:in=>4..40 }
-  validates :password_confirmation, :presence=>true
+  validates :password, :presence=>true, :confirmation=>true, :length=>{:in=>4..40 }, :if => :password_required
+  validates :password_confirmation, :presence=>true, :if => :password_required
   #整数
   #validates :role, :numericality=>{:only_integer=>true}
 
@@ -72,6 +74,10 @@ class User < ActiveRecord::Base
 
   def default_values
     self.role ||= ROLE[:user]
+  end
+
+  def password_required
+    self.crypted_password.blank? || self.password.present?
   end
 
 end

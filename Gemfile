@@ -12,6 +12,8 @@ gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'mysql2'
 #password
 gem 'bcrypt-ruby'
+gem 'carrierwave', :require => ['carrierwave', 'carrierwave/orm/activerecord']
+gem 'mini_magick'
 
 
 ## Production requirements

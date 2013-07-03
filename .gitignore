@@ -12,3 +12,5 @@ db/*.db
 *.pid
 *.ruby-version
 *.ruby-gemset
+public/uploads/*
+public/user/*

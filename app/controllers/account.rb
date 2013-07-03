@@ -1,6 +1,9 @@
 # encoding: utf-8
 Store::App.controllers :account do
   
+  before(:edit_profile) do
+    auth_login
+  end 
 
   #注册页面
   get :register do
@@ -16,7 +19,7 @@ Store::App.controllers :account do
       @success=true
     else
       @success=false
-      @note="服务器忙，请稍候重试！"
+      @note=Settings[:site_error_info]
     end
     content_type 'text/xml'
     render "account/register_create"
@@ -53,5 +56,34 @@ Store::App.controllers :account do
     end
     redirect url("/")
   end
+
+
+  #个人资料编辑
+  get :edit_profile do
+    render "account/edit_profile"
+  end
+
+  #修改资料后的提交
+  put :update_profile do
+    logger.debug(params)
+    @user=User.find(params[:id])
+    if @user.blank?
+      @success=false
+      @note="该用户不存在！"
+      content_type 'text/xml'
+      return render "account/update_profile"
+    end
+
+    if @user.update_attributes(params[:user])
+      @success=true
+      @note="修改成功！"
+    else
+      @success=false
+      @note=Settings[:site_error_info]
+    end
+    content_type 'text/xml'
+    render "account/update_profile"
+  end
+
 
 end

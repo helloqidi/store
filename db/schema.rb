@@ -11,7 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 3) do
+ActiveRecord::Schema.define(:version => 6) do
+
+  create_table "assets", :force => true do |t|
+    t.integer  "related_id",               :null => false
+    t.string   "file"
+    t.integer  "sort",       :limit => 3,  :null => false
+    t.string   "file_type",  :limit => 10
+    t.integer  "file_size"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  create_table "items", :force => true do |t|
+    t.string   "title",                           :null => false
+    t.text     "description", :limit => 16777215, :null => false
+    t.integer  "status",      :limit => 3,        :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name",             :limit => 100, :null => false
@@ -21,6 +39,7 @@ ActiveRecord::Schema.define(:version => 3) do
     t.string   "ip",               :limit => 100
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
+    t.string   "avatar"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

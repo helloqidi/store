@@ -3,6 +3,7 @@ development: &default
   site_title: "网站标题"
   site_description: "网站描述"
   site_keywords: "网站关键词"
+  site_error_info: "服务器忙，请稍候重试！"
   
 test: 
   <<: *default
