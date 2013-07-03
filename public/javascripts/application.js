@@ -29,7 +29,7 @@ store.initial=function(){
  * */
 store.validateRegisterForm=function(){
   /* 表单验证 */
-  $('#register-form').validate({
+  $("#register-form").validate({
     rules:{
       "user[email]":{
         required: true,
@@ -124,7 +124,7 @@ store.versionIEWarn=function(text){
  * */
 store.validateLoginForm=function(){
   /* 表单验证 */
-  $('#login-form').validate({
+  $("#login-form").validate({
     rules:{
       "email":{
         required: true,
@@ -163,7 +163,7 @@ store.validateLoginForm=function(){
  * */
 store.validateProfileForm=function(){
   /* 表单验证 */
-  $('#profile-form').validate({
+  $("#profile-form").validate({
     rules:{
       "user[email]":{
         required: true,
@@ -188,6 +188,36 @@ store.validateProfileForm=function(){
         required: "昵称不能为空",
         minlength: "最少2个字符",
         maxlength: "最多100个字符"
+      }
+    },
+    errorClass: "help-inline store-text-error",
+    submitHandler: function(form) {
+      $(form).ajaxSubmit({});
+    }
+  });
+};
+
+
+/*
+ * 创建商品表单
+ * */
+store.validateNewItemForm=function(){
+  /* 表单验证 */
+  $("#new-item-form").validate({
+    rules:{
+      "item[title]":{
+        required: true
+      },
+      "item[description]":{
+        required: true   
+      }
+    },
+    messages: {
+      "item[title]":{
+        required: "标题不能为空"
+      },
+      "item[description]":{
+        required: "描述不能为空"
       }
     },
     errorClass: "help-inline store-text-error",

@@ -11,17 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 6) do
-
-  create_table "assets", :force => true do |t|
-    t.integer  "related_id",               :null => false
-    t.string   "file"
-    t.integer  "sort",       :limit => 3,  :null => false
-    t.string   "file_type",  :limit => 10
-    t.integer  "file_size"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
-  end
+ActiveRecord::Schema.define(:version => 8) do
 
   create_table "items", :force => true do |t|
     t.string   "title",                           :null => false
@@ -29,6 +19,16 @@ ActiveRecord::Schema.define(:version => 6) do
     t.integer  "status",      :limit => 3,        :null => false
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
+  end
+
+  create_table "photos", :force => true do |t|
+    t.integer  "related_id",               :null => false
+    t.string   "file"
+    t.integer  "sort",       :limit => 3,  :null => false
+    t.string   "file_type",  :limit => 10
+    t.integer  "file_size"
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
   end
 
   create_table "users", :force => true do |t|

@@ -14,3 +14,4 @@ db/*.db
 *.ruby-gemset
 public/uploads/*
 public/user/*
+public/photo/*

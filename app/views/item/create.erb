@@ -1,0 +1,11 @@
+<taconite>
+<% if @success %>
+  <eval>
+    store.showSuccessInfo("<%=@note%>");
+  </eval>
+<%else%>
+  <eval>
+    store.showErrorInfo("<%=@note%>");
+  </eval>
+<%end%>
+</taconite>

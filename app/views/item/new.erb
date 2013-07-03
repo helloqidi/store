@@ -1,0 +1,18 @@
+<% content_for :jquery do %>
+  store.validateNewItemForm();
+<% end %>
+
+
+<div>
+  <% form_for @item, url(:item, :create),  :multipart => true,:class=>"form-signin",:id=>"new-item-form" do |f| %>
+    <h2 class="form-signin-heading mb-10">创建商品</h2>
+    <%= f.text_field :title,:class=>"input-large",:placeholder=>"标题" %>
+    <%= f.text_area :description,:class=>"",:rows=>"8",:placeholder=>"描述" %>
+    <br />
+    <input id="photo_file" name="photo[file][]" type="file">
+    <input id="photo_file" name="photo[file][]" type="file">
+    <input id="photo_file" name="photo[file][]" type="file">
+    <br /><br />
+    <%= f.submit "保存",:class=>"btn btn-large btn-primary" %>
+  <% end %>
+</div>

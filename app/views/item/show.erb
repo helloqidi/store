@@ -1,0 +1,7 @@
+<%= @item.title %>
+<br />
+<%= @item.description %>
+<br />
+<% @item.photos.each do |photo| %>
+  <%= image_tag(photo.file.url(:small)) %> <br />
+<% end %>

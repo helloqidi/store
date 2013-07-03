@@ -2,7 +2,7 @@
 require 'bcrypt'
 class User < ActiveRecord::Base
   attr_accessor :password, :password_confirmation
-  #头像
+  #头像图片
   mount_uploader :avatar, AvatarUploader
 
   ##关系
@@ -25,11 +25,11 @@ class User < ActiveRecord::Base
   validates :password, :presence=>true, :confirmation=>true, :length=>{:in=>4..40 }, :if => :password_required
   validates :password_confirmation, :presence=>true, :if => :password_required
   #整数
-  #validates :role, :numericality=>{:only_integer=>true}
+  validates :role, :numericality=>{:only_integer=>true}
 
 
   ##回调
-  before_save :default_values
+  before_validation :default_values
   before_create :encrypt_password
 
   #验证email和密码

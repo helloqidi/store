@@ -2,6 +2,8 @@
 class Item < ActiveRecord::Base
 
   ##关系
+  has_many :photos, :foreign_key=>"related_id"
+
 
   ##常量
   STATUS={
@@ -19,7 +21,7 @@ class Item < ActiveRecord::Base
   
 
   ##回调
-  before_save :default_values
+  before_validation :default_values
 
 
   private

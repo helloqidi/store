@@ -1,32 +1,30 @@
 # encoding: utf-8
-class AvatarUploader < CarrierWave::Uploader::Base
+class PhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   #存储在文件中
   storage :file
-  
-  #process :resize_to_fit => [80, 80]
-  #process :convert => 'png' 
+
  
   version :small do
-    process :resize_to_fill => [30, 30]
+    process :resize_to_fill => [180, 180]
   end
 
   version :middle do
-    process :resize_to_fill => [50, 50]
+    process :resize_to_limit => [380, nil]
   end
   
   version :big do
-    process :resize_to_fill => [100, 100]
+    process :resize_to_limit => [780, nil]
   end
 
 
   #文件名
   def filename
     if super.present?
-      #加上avatar后,将会把各version分别建立文件夹来存储
-      #"avatar/#{model.id}.#{file.extension.downcase}"
-      "#{model.id}.#{file.extension.downcase}"
+      # current_path 是 Carrierwave 上传过程临时创建的一个文件，有时间标记，所以它将是唯一的
+      @name ||= Digest::MD5.hexdigest(File.dirname(current_path))
+      "#{@name}.#{file.extension.downcase}"
     end
   end
 
@@ -37,7 +35,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   #默认头像地址
   def default_url
-   "/images/default_logo.jpg"
+   "photo/#{version_name}.gif"
   end
 
   #允许上传的文件
