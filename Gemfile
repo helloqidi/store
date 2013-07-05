@@ -14,6 +14,8 @@ gem 'mysql2'
 gem 'bcrypt-ruby'
 gem 'carrierwave', :require => ['carrierwave', 'carrierwave/orm/activerecord']
 gem 'mini_magick'
+#DSL for HTTP
+gem 'rest-client'
 
 
 ## Production requirements
