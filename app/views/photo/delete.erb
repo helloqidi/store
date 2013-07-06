@@ -1,9 +1,6 @@
 <taconite>
 <% if @success %>
-  <eval>
-    store.showSuccessInfo("<%=@note%>");
-    store.redirect("<%=@redirect_url%>",3);
-  </eval>
+  <remove select="#area-<%=@photo.id%>" />
 <%else%>
   <eval>
     store.showErrorInfo("<%=@note%>");

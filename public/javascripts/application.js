@@ -222,6 +222,41 @@ store.validateNewItemForm=function(){
     },
     errorClass: "help-inline store-text-error",
     submitHandler: function(form) {
+      //增加富文本编辑框的验证
+      $('#item_description').valid();
+      $(form).ajaxSubmit({});
+    }
+  });
+};
+
+
+
+/*
+ * 编辑商品表单
+ * */
+store.validateEditItemForm=function(){
+  /* 表单验证 */
+  $("#edit-item-form").validate({
+    rules:{
+      "item[title]":{
+        required: true
+      },
+      "item[description]":{
+        required: true   
+      }
+    },
+    messages: {
+      "item[title]":{
+        required: "标题不能为空"
+      },
+      "item[description]":{
+        required: "描述不能为空"
+      }
+    },
+    errorClass: "help-inline store-text-error",
+    submitHandler: function(form) {
+      //增加富文本编辑框的验证
+      $('#item_description').valid();
       $(form).ajaxSubmit({});
     }
   });

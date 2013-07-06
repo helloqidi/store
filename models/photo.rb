@@ -15,9 +15,14 @@ class Photo < ActiveRecord::Base
     #商品描述图
     :item_desc=>2
   }
+  #是否被引用
+  QUOTE={
+    :yes=>0,
+    :no=>1
+  }
 
   ##验证
-  validates :related_id, :presence=>true
+  #validates :related_id, :presence=>true
   validates :file, :presence=>true
   validates :sort, :presence=>true
   

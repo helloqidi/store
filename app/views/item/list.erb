@@ -1,0 +1,8 @@
+
+<% @items.each_with_index do |item,index| %>
+  <%= index+1 %>，<%= link_to item.title,url(:item,:show,:id=>item.id),:target=>"_blank" %> <%= link_to "编辑",url(:item,:edit,:id=>item.id) %><br />
+<% end %>
+
+<p>
+  <%= link_to "创建",url(:item,:new),:target=>"_blank" %>
+</p>
