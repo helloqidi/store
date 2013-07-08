@@ -97,5 +97,20 @@ Store::App.controllers :item do
     render "item/update"
   end
 
+  #搜索
+  get :search do
+    logger.debug(params)
+    if params[:q].blank?
+      flash[:error]="请输入搜索关键词"
+      redirect url(:item,:list)
+    end
+    #@results=Item.search(params[:q])
+    key_word=params[:q]
+    @results=Item.search do
+      query { string "#{key_word}" }
+      highlight 'title','description'
+    end
+    render "item/search"
+  end
 
 end

@@ -1,5 +1,7 @@
 # encoding: utf-8
 class Item < ActiveRecord::Base
+  include Tire::Model::Search
+  include Tire::Model::Callbacks
 
   ##关系
   has_many :photos, :foreign_key=>"related_id"

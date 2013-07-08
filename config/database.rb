@@ -43,3 +43,9 @@ ActiveSupport.escape_html_entities_in_json = false
 # Now we can establish connection with our db.
 #ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations[Padrino.env])
 ActiveRecord::Base.establish_connection(ActiveRecord::Base.configurations[PADRINO_ENV.to_sym])
+
+#full-text search engine
+Tire.configure do
+  url    'http://localhost:9200'
+  #logger STDERR
+end
