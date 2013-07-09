@@ -17,6 +17,7 @@ gem 'mini_magick'
 #DSL for HTTP
 gem 'rest-client'
 gem 'nokogiri'
+#full-text search
 gem 'tire'
 
 
