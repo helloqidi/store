@@ -4,6 +4,7 @@ module Store
     register Padrino::Rendering
     register Padrino::Mailer
     register Padrino::Helpers
+    register WillPaginate::Sinatra
 
     # 引用共用方法
     include HelpersAuth

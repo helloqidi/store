@@ -9,6 +9,7 @@
   <%= index+1 %>，<%= link_to item.title,url(:item,:show,:id=>item.id),:target=>"_blank" %> <%= link_to "编辑",url(:item,:edit,:id=>item.id) %><br />
 <% end %>
 
+<%= (will_paginate @items).to_s.html_safe %>
 <p>
 <%= link_to "创建",url(:item,:new),:target=>"_blank" %>
 </p>

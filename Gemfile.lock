@@ -125,6 +125,7 @@ GEM
       raindrops (~> 0.7)
     url_mount (0.2.1)
       rack
+    will_paginate (3.0.4)
 
 PLATFORMS
   ruby
@@ -145,3 +146,4 @@ DEPENDENCIES
   rvm-capistrano
   thin
   tire
+  will_paginate

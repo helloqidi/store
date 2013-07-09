@@ -19,7 +19,7 @@ gem 'rest-client'
 gem 'nokogiri'
 #full-text search
 gem 'tire'
-
+gem 'will_paginate', :require => ['will_paginate/active_record', 'will_paginate/view_helpers/sinatra']
 
 ## Production requirements
 group :production do

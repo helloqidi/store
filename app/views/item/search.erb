@@ -11,12 +11,9 @@
 <div class="result">
 <%@results.each_with_index do |result,index|%>
   <%=index+1%>,
-  <%if result.highlight.to_hash[:title].present?%>
-    标题：<%=result.highlight.to_hash[:title].first.html_safe%>
-  <%end%>
-  <%if result.highlight.to_hash[:description].present?%>
-    描述：<%=result.highlight.to_hash[:description].first.html_safe%>
-  <%end%>
+
+  <%=link_to result.highlight.to_hash[:title].first.html_safe,url(:item,:show,:id=>result.id),:target=>"_blank"%>
+
   <br />
 <%end%>
 </div>

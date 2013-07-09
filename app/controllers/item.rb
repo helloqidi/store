@@ -52,7 +52,7 @@ Store::App.controllers :item do
 
   #列表
   get :list do
-    @items=Item.all
+    @items=Item.paginate(:page => params[:page], :per_page => 5)
     render "item/list"
   end
 
@@ -104,12 +104,17 @@ Store::App.controllers :item do
       flash[:error]="请输入搜索关键词"
       redirect url(:item,:list)
     end
-    #@results=Item.search(params[:q])
+    
     key_word=params[:q]
-    @results=Item.search do
-      query { string "#{key_word}" }
-      highlight 'title','description'
+
+    #参考 https://github.com/karmi/tire/tree/master/test/integration
+    search=Tire.search('items') do
+      query do
+        match :title, "#{key_word}"
+      end
+      highlight 'title'
     end
+    @results=search.results
     render "item/search"
   end
 
