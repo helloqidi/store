@@ -18,13 +18,13 @@ Store::App.controllers :item do
     begin
       #事务处理
       ActiveRecord::Base.transaction do
-        if @item.save
+        if @item.save!
           #多图片上传
           if params[:photo][:file].present?
             params[:photo][:file].each do |file|
               #会有这种情况{...,"photo"=>{"file"=>["", "", ""]} }
               next if file.blank?
-              @item.photos.create(:file=>file,:sort=>Photo::SORT[:item_main])
+              @item.photos.create!(:file=>file,:sort=>Photo::SORT[:item_main])
             end
           end
           @success=true
@@ -71,13 +71,13 @@ Store::App.controllers :item do
     begin
       #事务处理
       ActiveRecord::Base.transaction do
-        if @item.update_attributes(params[:item])
+        if @item.update_attributes!(params[:item])
           #多图片上传
           if params[:photo][:file].present?
             params[:photo][:file].each do |file|
               #会有这种情况{...,"photo"=>{"file"=>["", "", ""]} }
               next if file.blank?
-              @item.photos.create(:file=>file,:sort=>Photo::SORT[:item_main])
+              @item.photos.create!(:file=>file,:sort=>Photo::SORT[:item_main])
             end
           end
           @success=true
@@ -106,6 +106,8 @@ Store::App.controllers :item do
     end
     
     key_word=params[:q]
+    page=(params[:page] || 1).to_i
+    per=2
 
     #参考 https://github.com/karmi/tire/tree/master/test/integration
     search=Tire.search('items') do
@@ -113,6 +115,8 @@ Store::App.controllers :item do
         match :title, "#{key_word}"
       end
       highlight 'title'
+      from (page-1)*per
+      size per
     end
     @results=search.results
     render "item/search"
