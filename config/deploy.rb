@@ -78,3 +78,8 @@ desc "Padrino create database seed"
 task :padrino_create_seed, :roles => :app do
   run "cd #{deploy_to}/current/; bundle exec padrino rake db:seed -e production"
 end
+
+desc "Store compress js css"
+task :compress_js_css, :roles => :app do
+  run "cd #{deploy_to}/current/; bundle exec padrino rake compress:compress_js_css -e production"
+end
