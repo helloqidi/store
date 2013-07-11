@@ -1,8 +1,34 @@
 # encoding: utf-8
 
-# 执行bundle install
-require 'bundler/capistrano'
+#一,初始步骤：
+#1,本机配置,得到2个文件Capfile,deploy.rb.进行文件的修改配置.
+#capify .
+#
+#2,在服务器上搭建好软件环境
+#注:使用capistrano后不需要用gemset来管理项目的gem包了.
+#
+#3,nginx,rainbow中项目目录后增加current这一级
+#
+#4,本机执行:
+#cap deploy:setup
+#cap deploy(需要绑定bundle:install,如果绑定了deploy:padrino_migrate_database需要暂时删除绑定)
+#
+#5,初始化数据库
+#cap deploy:padrino_create_database
+#cap deploy:padrino_migrate_database
+#
+#二,平时操作步骤：
+#1,cap deploy(需要绑定deploy:padrino_migrate_database,bundle:install,它本身最后会执行deploy:restart)
+#
+#2,查看,执行其他命令
+#cap -vT
+#...
 
+
+
+
+
+require 'bundler/capistrano'
 require "rvm/capistrano"
 set :rvm_ruby_string, "ruby-2.0.0-p195"
 set :rvm_type, :user
@@ -27,21 +53,6 @@ role :web, domain                         # Your HTTP server, Apache/etc
 role :app, domain                          # This may be the same as your `Web` server
 role :db,  domain, :primary => true # This is where Rails migrations will run
 #role :db,  "your slave db-server here"
-
-# if you want to clean up old releases on each deploy uncomment this:
-# after "deploy:restart", "deploy:cleanup"
-
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
-
-# If you are using Passenger mod_rails uncomment this:
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
 
 namespace :deploy do
   desc "Start Application"
@@ -71,7 +82,7 @@ task :padrino_migrate_database, :roles => :app do
 end
 
 #每次deploy后,执行migrate
-after "deploy:symlink", "padrino_migrate_database"
+after "deploy:symlink", "padrino_migrate_database", "bundle:install"
 
 #注:此命令自动化部署不行.需要ssh到服务器上,增加此文件执行权限,再手动执行db:seed命令.
 desc "Padrino create database seed"
