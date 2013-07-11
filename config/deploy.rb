@@ -11,19 +11,18 @@
 #
 #4,本机执行:
 #cap deploy:setup
-#cap deploy(需要绑定bundle:install,如果绑定了deploy:padrino_migrate_database需要暂时删除绑定)
+#cap deploy(如果绑定了deploy:padrino_migrate_database需要暂时删除绑定,它本身会执行bundle:install,)
 #
 #5,初始化数据库
 #cap deploy:padrino_create_database
 #cap deploy:padrino_migrate_database
 #
 #二,平时操作步骤：
-#1,cap deploy(需要绑定deploy:padrino_migrate_database,bundle:install,它本身最后会执行deploy:restart)
+#1,cap deploy(需要绑定deploy:padrino_migrate_database,它本身会执行bundle:install,deploy:restart)
 #
 #2,查看,执行其他命令
 #cap -vT
 #...
-
 
 
 
@@ -82,7 +81,7 @@ task :padrino_migrate_database, :roles => :app do
 end
 
 #每次deploy后,执行migrate
-after "deploy:symlink", "padrino_migrate_database", "bundle:install"
+after "deploy:symlink", "padrino_migrate_database"
 
 #注:此命令自动化部署不行.需要ssh到服务器上,增加此文件执行权限,再手动执行db:seed命令.
 desc "Padrino create database seed"
