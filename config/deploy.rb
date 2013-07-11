@@ -108,5 +108,6 @@ end
 
 
 #最后没用capistrano,有2点:
-#1,gem install成功,但是cap deploy时不成功
+#1,gem install成功,但是cap deploy时不成功(包括nokogiri).当删除项目目录重新deploy:setup后,bundle:install的问题就更多了.
 #2,carrierwave上传文件需要特别设置
+#以上问题消耗了5,6个小时来解决
