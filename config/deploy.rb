@@ -29,7 +29,7 @@
 
 
 
-require 'bundler/capistrano'
+#require 'bundler/capistrano'
 require "rvm/capistrano"
 set :rvm_ruby_string, "ruby-2.0.0-p195"
 #rvm_type :system or :user – user looks for rvm in $HOME/.rvm where as system uses the /usr/local as set for system wide installs.
@@ -108,8 +108,8 @@ after 'deploy:update_code', 'deploy:symlink_uploads'
 #end
 
 #曾经尝试自动化解决 nokogiri 安装问题的方法,失败.最后只能在服务器上先NOKOGIRI_USE_SYSTEM_LIBRARIES=true gem install nokogiri安装好,再在Gemfile中给nokogiri指定path.
-#before "deploy:finalize_update", "bundle_install_for_nokogiri"
-#desc "Bundle install for nokogiri"
-#task :bundle_install_for_nokogiri, :roles => :app do
-#  run "cd #{release_path} && NOKOGIRI_USE_SYSTEM_LIBRARIES=true bundle install --gemfile #{release_path}/Gemfile --path #{shared_path}/bundle  --deployment --quiet --without development test"
-#end
+before "deploy:finalize_update", "bundle_install_store"
+desc "Bundle install for store"
+task :bundle_install_store, :roles => :app do
+  run "cd #{release_path} && rvm gemset use store && bundle install --gemfile #{release_path}/Gemfile --deployment --quiet --without development test"
+end
