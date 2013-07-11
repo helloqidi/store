@@ -29,7 +29,7 @@
 
 
 
-#require 'bundler/capistrano'
+require 'bundler/capistrano'
 require "rvm/capistrano"
 set :rvm_ruby_string, "ruby-2.0.0-p195"
 #rvm_type :system or :user – user looks for rvm in $HOME/.rvm where as system uses the /usr/local as set for system wide installs.
@@ -41,7 +41,6 @@ default_run_options[:pty] = true
 set :domain, "115.28.34.45"
 #网站目录名称
 set :application, "store"
-
 
 set :scm, :git
 set :repository,  "git@github.com:helloqidi/store.git"
@@ -72,12 +71,6 @@ namespace :deploy do
   task :restart, :roles => :app do
     run "cd #{deploy_to}/current/; ./rainbows.sh restart"
   end
-
-  #解决carrierwave的上传出现的问题.
-  desc "Resolve carrierwave dir question"
-  task :symlink_uploads do
-    run "ln -nfs #{shared_path}/uploads  #{release_path}/public/uploads"
-  end
 end
 
 desc "Padrino create database"
@@ -90,16 +83,15 @@ task :padrino_migrate_database, :roles => :app do
   run "cd #{deploy_to}/current/; bundle exec padrino rake ar:migrate -e production"
 end
 
+#每次deploy后,执行migrate
+after "deploy:symlink", "padrino_migrate_database"
+
 
 desc "Store compress js css"
 task :compress_js_css, :roles => :app do
   run "cd #{deploy_to}/current/; bundle exec padrino rake compress:compress_js_css -e production"
 end
 
-#每次deploy后,执行migrate
-after "deploy:symlink", "padrino_migrate_database"
-
-after 'deploy:update_code', 'deploy:symlink_uploads'
 
 #曾经尝试的自动化执行db:seed命令,失败.最后指定ssh到服务器上手动执行.
 #desc "Padrino create database seed"
@@ -108,8 +100,13 @@ after 'deploy:update_code', 'deploy:symlink_uploads'
 #end
 
 #曾经尝试自动化解决 nokogiri 安装问题的方法,失败.最后只能在服务器上先NOKOGIRI_USE_SYSTEM_LIBRARIES=true gem install nokogiri安装好,再在Gemfile中给nokogiri指定path.
-before "deploy:finalize_update", "bundle_install_store"
-desc "Bundle install for store"
-task :bundle_install_store, :roles => :app do
-  run "cd #{release_path} && bundle install --gemfile #{release_path}/Gemfile --deployment --quiet --without development test"
-end
+#before "deploy:finalize_update", "bundle_install_for_nokogiri"
+#desc "Bundle install for nokogiri"
+#task :bundle_install_for_nokogiri, :roles => :app do
+#  run "cd #{release_path} && NOKOGIRI_USE_SYSTEM_LIBRARIES=true bundle install --gemfile #{release_path}/Gemfile --path #{shared_path}/bundle  --deployment --quiet --without development test"
+#end
+
+
+#最后没用capistrano,有2点:
+#1,gem install成功,但是cap deploy时不成功
+#2,carrierwave上传文件需要特别设置

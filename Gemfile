@@ -9,32 +9,32 @@ gem 'padrino', '~> 0.11'
 ## Component requirements
 gem 'erubis', '~> 2.7.0'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
-gem 'mysql2'
+gem 'mysql2', '~> 0.3.11'
 #password
-gem 'bcrypt-ruby'
+gem 'bcrypt-ruby', '~> 3.1.1'
 gem 'carrierwave', :require => ['carrierwave', 'carrierwave/orm/activerecord']
-gem 'mini_magick'
+gem 'mini_magick', '~> 3.6.0'
 #DSL for HTTP
-gem 'rest-client'
+gem 'rest-client', '~> 1.6.7'
 #nokogiri在服务器上用bundle:install不成功.最后直接在服务器上 NOKOGIRI_USE_SYSTEM_LIBRARIES=true gem install nokogiri,此处直接引用安装好的gem路径
-gem 'nokogiri', '1.6.0', :path => '/home/helloqidi/.rvm/gems/ruby-2.0.0-p195@store/gems/nokogiri-1.6.0'
+gem 'nokogiri', '~> 1.6.0'
 #full-text search
-gem 'tire'
-gem 'will_paginate', :require => ['will_paginate/active_record', 'will_paginate/view_helpers/sinatra']
+gem 'tire', '~> 0.6.0'
+gem 'will_paginate', '~> 3.0.4', :require => ['will_paginate/active_record', 'will_paginate/view_helpers/sinatra']
 #compress js/css
-gem 'yui-compressor'
+gem 'yui-compressor', '~> 0.9.6'
 
 ## Production requirements
 group :production do
-  gem 'rainbows'
+  gem 'rainbows', '~> 4.5.0'
 end
 
 
 ## Development requirements
 group :development do
   gem 'thin'
-  gem 'capistrano','~> 2.15.0'
-  gem 'rvm-capistrano', require: false
+  #gem 'capistrano','~> 2.15.0'
+  #gem 'rvm-capistrano', require: false
 end
 
 
