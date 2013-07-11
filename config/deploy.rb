@@ -32,6 +32,7 @@
 require 'bundler/capistrano'
 require "rvm/capistrano"
 set :rvm_ruby_string, "ruby-2.0.0-p195"
+#rvm_type :system or :user – user looks for rvm in $HOME/.rvm where as system uses the /usr/local as set for system wide installs.
 set :rvm_type, :user
 
 # set this to keep from missing any password prompts
