@@ -23,7 +23,7 @@ GEM
       multi_json (~> 1.0)
     ansi (1.4.3)
     arel (3.0.2)
-    bcrypt-ruby (3.0.1)
+    bcrypt-ruby (3.1.1)
     builder (3.0.4)
     capistrano (2.15.4)
       highline
@@ -141,7 +141,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord (>= 3.1)
-  bcrypt-ruby
+  bcrypt-ruby (~> 3.1.1)
   capistrano (~> 2.15.0)
   carrierwave
   erubis (~> 2.7.0)
