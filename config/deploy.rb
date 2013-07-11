@@ -26,8 +26,8 @@
 
 
 
-
-require 'bundler/capistrano'
+#暂时没用这个require 'bundler/capistrano',因为nokogiri这个插件在bundle时需要增加额外的参数
+#require 'bundler/capistrano'
 require "rvm/capistrano"
 set :rvm_ruby_string, "ruby-2.0.0-p195"
 set :rvm_type, :user
@@ -92,4 +92,12 @@ end
 desc "Store compress js css"
 task :compress_js_css, :roles => :app do
   run "cd #{deploy_to}/current/; bundle exec padrino rake compress:compress_js_css -e production"
+end
+
+
+before "deploy:finalize_update", "bundle_install_for_nokogiri"
+
+desc "Bundle install for nokogiri"
+task :bundle_install_for_nokogiri, :roles => :app do
+  run "cd #{release_path} && NOKOGIRI_USE_SYSTEM_LIBRARIES=true bundle install --gemfile #{release_path}/Gemfile --path #{shared_path}/bundle  --deployment --quiet --without development test"
 end
