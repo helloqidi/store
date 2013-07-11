@@ -42,9 +42,6 @@ set :domain, "115.28.34.45"
 #网站目录名称
 set :application, "store"
 
-#将carrierwave的上传目录也设置到shared中.否则会出现deploy后图片不显示等问题.
-#Don't forget to run cap deploy:setup after changing :shared_children so that the new targets are created under shared.
-set :shared_children, shared_children + %w{public/uploads}
 
 set :scm, :git
 set :repository,  "git@github.com:helloqidi/store.git"
@@ -96,6 +93,14 @@ task :compress_js_css, :roles => :app do
   run "cd #{deploy_to}/current/; bundle exec padrino rake compress:compress_js_css -e production"
 end
 
+#将carrierwave的上传目录也设置到shared中.否则会出现deploy后图片不显示等问题.
+#Don't forget to run cap deploy:setup after changing :shared_children so that the new targets are created under shared.
+desc "Resolve carrierwave dir question"
+task :symlink_uploads do
+  run "ln -nfs #{shared_path}/uploads  #{release_path}/public/uploads"
+end
+
+after 'deploy:update_code', 'deploy:symlink_uploads'
 
 #曾经尝试的自动化执行db:seed命令,失败.最后指定ssh到服务器上手动执行.
 #desc "Padrino create database seed"
