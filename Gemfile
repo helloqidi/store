@@ -16,7 +16,7 @@ gem 'carrierwave', :require => ['carrierwave', 'carrierwave/orm/activerecord']
 gem 'mini_magick'
 #DSL for HTTP
 gem 'rest-client'
-#nokogiri在服务器上用cap deploy时bundle:install不成功
+#nokogiri在服务器上用bundle:install不成功.最后直接在服务器上 NOKOGIRI_USE_SYSTEM_LIBRARIES=true gem install nokogiri,此处直接引用安装好的gem路径
 gem 'nokogiri', '1.6.0', :path => '/home/helloqidi/.rvm/gems/ruby-2.0.0-p195@store/gems/nokogiri-1.6.0'
 #full-text search
 gem 'tire'

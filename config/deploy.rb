@@ -94,6 +94,8 @@ task :compress_js_css, :roles => :app do
 end
 
 
+
+#曾经尝试自动化解决 nokogiri 安装问题的方法,失败.
 #before "deploy:finalize_update", "bundle_install_for_nokogiri"
 #desc "Bundle install for nokogiri"
 #task :bundle_install_for_nokogiri, :roles => :app do
