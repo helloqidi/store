@@ -17,7 +17,7 @@ gem 'mini_magick'
 #DSL for HTTP
 gem 'rest-client'
 #nokogiri在服务器上用cap deploy时bundle:install不成功
-gem 'nokogiri', '1.6.0'
+gem 'nokogiri', '1.6.0', :path => '/home/helloqidi/.rvm/gems/ruby-2.0.0-p195@store/gems/nokogiri-1.6.0'
 #full-text search
 gem 'tire'
 gem 'will_paginate', :require => ['will_paginate/active_record', 'will_paginate/view_helpers/sinatra']
