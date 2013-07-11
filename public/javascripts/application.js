@@ -223,8 +223,9 @@ store.validateNewItemForm=function(){
     errorClass: "help-inline store-text-error",
     submitHandler: function(form) {
       //增加富文本编辑框的验证
-      $('#item_description').valid();
-      $(form).ajaxSubmit({});
+      if($('#item_description').valid()!=false){
+        $(form).ajaxSubmit({});
+      }
     }
   });
 };
@@ -256,8 +257,9 @@ store.validateEditItemForm=function(){
     errorClass: "help-inline store-text-error",
     submitHandler: function(form) {
       //增加富文本编辑框的验证
-      $('#item_description').valid();
-      $(form).ajaxSubmit({});
+      if($('#item_description').valid()!=false){
+        $(form).ajaxSubmit({});
+      }
     }
   });
 };
