@@ -42,6 +42,10 @@ set :domain, "115.28.34.45"
 #网站目录名称
 set :application, "store"
 
+#将carrierwave的上传目录也设置到shared中.否则会出现deploy后图片不显示等问题.
+#Don't forget to run cap deploy:setup after changing :shared_children so that the new targets are created under shared.
+set :shared_children, shared_children + %w{public/uploads}
+
 set :scm, :git
 set :repository,  "git@github.com:helloqidi/store.git"
 set :branch, "master"
