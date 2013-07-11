@@ -11,7 +11,7 @@ gem 'erubis', '~> 2.7.0'
 gem 'activerecord', '>= 3.1', :require => 'active_record'
 gem 'mysql2'
 #password
-gem 'bcrypt-ruby', '~> 3.1.1'
+gem 'bcrypt-ruby', '~> 3.1.1', :path=>'/home/helloqidi/.rvm/gems/ruby-2.0.0-p195@store/gems/bcrypt-ruby-3.1.1'
 gem 'carrierwave', :require => ['carrierwave', 'carrierwave/orm/activerecord']
 gem 'mini_magick'
 #DSL for HTTP
