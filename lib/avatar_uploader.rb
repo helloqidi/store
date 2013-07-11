@@ -32,7 +32,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   #在publice下用于存储的文件夹名字
   def store_dir
-    "#{model.class.to_s.underscore}"
+    "uploads/#{model.class.to_s.underscore}"
   end
 
   #默认头像地址

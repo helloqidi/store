@@ -35,12 +35,12 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
   #在publice下用于存储的文件夹名字
   def store_dir
-    "#{model.class.to_s.underscore}"
+    "uploads/#{model.class.to_s.underscore}"
   end
 
-  #默认头像地址
+  #默认图片地址
   def default_url
-   "photo/#{version_name}.gif"
+   "/images/default_#{version_name}.gif"
   end
 
   #允许上传的文件
