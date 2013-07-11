@@ -143,7 +143,7 @@ DEPENDENCIES
   erubis (~> 2.7.0)
   mini_magick
   mysql2
-  nokogiri (= 1.5.10)
+  nokogiri
   padrino (~> 0.11)
   rainbows
   rake

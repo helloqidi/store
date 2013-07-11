@@ -16,8 +16,8 @@ gem 'carrierwave', :require => ['carrierwave', 'carrierwave/orm/activerecord']
 gem 'mini_magick'
 #DSL for HTTP
 gem 'rest-client'
-#nokogiri在服务器上用cap deploy时bundle:install不成功,因为nokogiri-1.6.0依赖的gcc版本过高
-gem 'nokogiri', "1.5.10"
+#nokogiri在服务器上用cap deploy时bundle:install不成功
+gem 'nokogiri'
 #full-text search
 gem 'tire'
 gem 'will_paginate', :require => ['will_paginate/active_record', 'will_paginate/view_helpers/sinatra']
