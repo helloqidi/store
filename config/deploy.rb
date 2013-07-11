@@ -96,8 +96,7 @@ end
 
 
 before "deploy:finalize_update", "bundle_install_for_nokogiri"
-
 desc "Bundle install for nokogiri"
 task :bundle_install_for_nokogiri, :roles => :app do
-  run "cd #{release_path} && NOKOGIRI_USE_SYSTEM_LIBRARIES=1 bundle install --gemfile #{release_path}/Gemfile --path #{shared_path}/bundle  --deployment --quiet --without development test"
+  run "cd #{release_path} && NOKOGIRI_USE_SYSTEM_LIBRARIES=true bundle install --gemfile #{release_path}/Gemfile --path #{shared_path}/bundle  --deployment --quiet --without development test"
 end
