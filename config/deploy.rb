@@ -111,5 +111,5 @@ after 'deploy:update_code', 'deploy:symlink_uploads'
 before "deploy:finalize_update", "bundle_install_store"
 desc "Bundle install for store"
 task :bundle_install_store, :roles => :app do
-  run "cd #{release_path} && rvm gemset use store && bundle install --gemfile #{release_path}/Gemfile --deployment --quiet --without development test"
+  run "cd #{release_path} && bundle install --gemfile #{release_path}/Gemfile --deployment --quiet --without development test"
 end
