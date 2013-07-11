@@ -72,6 +72,13 @@ namespace :deploy do
   task :restart, :roles => :app do
     run "cd #{deploy_to}/current/; ./rainbows.sh restart"
   end
+
+  #将carrierwave的上传目录也设置到shared中.否则会出现deploy后图片不显示等问题.
+  #Don't forget to run cap deploy:setup after changing :shared_children so that the new targets are created under shared.
+  desc "Resolve carrierwave dir question"
+  task :symlink_uploads do
+    run "ln -nfs #{shared_path}/uploads  #{release_path}/public/uploads"
+  end
 end
 
 desc "Padrino create database"
@@ -84,21 +91,14 @@ task :padrino_migrate_database, :roles => :app do
   run "cd #{deploy_to}/current/; bundle exec padrino rake ar:migrate -e production"
 end
 
-#每次deploy后,执行migrate
-after "deploy:symlink", "padrino_migrate_database"
-
 
 desc "Store compress js css"
 task :compress_js_css, :roles => :app do
   run "cd #{deploy_to}/current/; bundle exec padrino rake compress:compress_js_css -e production"
 end
 
-#将carrierwave的上传目录也设置到shared中.否则会出现deploy后图片不显示等问题.
-#Don't forget to run cap deploy:setup after changing :shared_children so that the new targets are created under shared.
-desc "Resolve carrierwave dir question"
-task :symlink_uploads do
-  run "ln -nfs #{shared_path}/uploads  #{release_path}/public/uploads"
-end
+#每次deploy后,执行migrate
+after "deploy:symlink", "padrino_migrate_database"
 
 after 'deploy:update_code', 'deploy:symlink_uploads'
 
