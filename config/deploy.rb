@@ -73,8 +73,7 @@ namespace :deploy do
     run "cd #{deploy_to}/current/; ./rainbows.sh restart"
   end
 
-  #将carrierwave的上传目录也设置到shared中.否则会出现deploy后图片不显示等问题.
-  #Don't forget to run cap deploy:setup after changing :shared_children so that the new targets are created under shared.
+  #解决carrierwave的上传出现的问题.
   desc "Resolve carrierwave dir question"
   task :symlink_uploads do
     run "ln -nfs #{shared_path}/uploads  #{release_path}/public/uploads"
