@@ -17,6 +17,9 @@
 #cap deploy:padrino_create_database
 #cap deploy:padrino_migrate_database
 #
+#6,ssh到服务器,执行db:seed
+#padrino rake db:seed -e production
+#
 #二,平时操作步骤：
 #1,cap deploy(需要绑定deploy:padrino_migrate_database,它本身会执行bundle:install,deploy:restart)
 #
@@ -82,11 +85,6 @@ end
 #每次deploy后,执行migrate
 after "deploy:symlink", "padrino_migrate_database"
 
-#注:此命令自动化部署不行.需要ssh到服务器上,增加此文件执行权限,再手动执行db:seed命令.
-desc "Padrino create database seed"
-task :padrino_create_seed, :roles => :app do
-  run "cd #{deploy_to}/current/; bundle exec padrino rake db:seed -e production"
-end
 
 desc "Store compress js css"
 task :compress_js_css, :roles => :app do
@@ -94,8 +92,13 @@ task :compress_js_css, :roles => :app do
 end
 
 
+#曾经尝试的自动化执行db:seed命令,失败.最后指定ssh到服务器上手动执行.
+#desc "Padrino create database seed"
+#task :padrino_create_seed, :roles => :app do
+#  run "cd #{deploy_to}/current/; bundle exec padrino rake db:seed -e production"
+#end
 
-#曾经尝试自动化解决 nokogiri 安装问题的方法,失败.
+#曾经尝试自动化解决 nokogiri 安装问题的方法,失败.最后只能在服务器上先NOKOGIRI_USE_SYSTEM_LIBRARIES=true gem install nokogiri安装好,再在Gemfile中给nokogiri指定path.
 #before "deploy:finalize_update", "bundle_install_for_nokogiri"
 #desc "Bundle install for nokogiri"
 #task :bundle_install_for_nokogiri, :roles => :app do
