@@ -8,7 +8,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
  
   version :small do
     #resize_to_fill会裁剪宽度和高度都为180(貌似是居中裁剪)
-    process :resize_to_fill => [180, 180]
+    #process :resize_to_fill => [180, 180]
     #resize_to_fit会根据宽高比例,先确定宽度或者高度为180,再按照比例裁剪另一项
     #process :resize_to_fit => [180, 180]
     #resize_to_limit与resize_to_fit的效果类似,但它的优点是可以把宽度或者高度中任何一项设置为nil,以确定是按照宽度还是高度进行等比例裁剪
