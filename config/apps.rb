@@ -37,3 +37,4 @@ end
 Padrino.mount('Store::App', :app_file => Padrino.root('app/app.rb')).to('/')
 
 Padrino.mount('Store::IosApi', :app_file => Padrino.root('ios_api/app.rb')).to('/ios_api')
+Padrino.mount('Store::WxApi', :app_file => Padrino.root('wx_api/app.rb')).to('/wx_api')
