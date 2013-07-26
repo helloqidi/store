@@ -1,4 +1,5 @@
 development: &default
+  domain: "http://192.168.5.79:3000"
   session_secret: "1234567890abcdefghigklmnsdfewiruewpo-12i0.dsas90dojidco2"
   site_title: "网站标题"
   site_description: "网站描述"
@@ -10,6 +11,7 @@ test:
 
 production:
   <<: *default
+  domain: "http://www.helloqidi.com"
   site_title: "运动客"
   site_description: "做专业的"
   site_keywords: "运动"

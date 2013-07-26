@@ -1,3 +1,4 @@
+# encoding: utf-8
 Store::WxApi.controllers :item do
     
   get :index do

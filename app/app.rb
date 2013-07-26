@@ -8,6 +8,7 @@ module Store
 
     # 引用共用方法
     include HelpersAuth
+    include HelpersShow
 
     #缺省key为rack.session
     enable :sessions

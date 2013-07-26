@@ -7,6 +7,7 @@ module Store
 
     # 引用共用方法
     include HelpersAuth
+    include HelpersShow
 
     enable :sessions
 
