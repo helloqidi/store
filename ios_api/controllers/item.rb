@@ -1,6 +1,10 @@
 # encoding: utf-8
 Store::IosApi.controllers :item do
-  
+
+  before do
+    content_type "application/json"
+  end
+
   ##商品列表
   #请求：
   #page,per
