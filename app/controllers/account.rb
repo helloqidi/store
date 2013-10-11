@@ -36,7 +36,7 @@ Store::App.controllers :account do
     @user=User.authenticate(params[:email],params[:password])
     if @user
       session[:user_id] = @user.id
-      #如果选择记住,则保留2个星期cookie信息,key为'user'
+      #如果选择记住,则保留2个星期cookie信息,cookie的key为'user'
       response.set_cookie('user', {:value => @user.encrypt_cookie_value, :path => "/", :expires => 2.weeks.since, :httponly => true}) if params[:remember_me]
       @success=true
     else

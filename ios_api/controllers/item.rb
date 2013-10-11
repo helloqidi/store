@@ -2,8 +2,9 @@
 Store::IosApi.controllers :item do
 
   before do
-    content_type "application/json"
-  end
+    #content_type "application/json"
+    content_type :json
+  end  
 
   ##商品列表
   #请求：
@@ -32,8 +33,8 @@ Store::IosApi.controllers :item do
           :id=>item.id,
           :title=>item.title,
           :created_at=>item.created_at,
-          :width_small=>"180",
-          :height_small=>"180",
+          :width_small=>180,
+          :height_small=>180,
           :photo_small=>domain_path(photo_small_url)
         }
         list_array<<list_hash

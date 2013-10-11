@@ -10,7 +10,7 @@ module Store
     include HelpersAuth
     include HelpersShow
 
-    #缺省key为rack.session
+    #缺省cookie的key为rack.session
     enable :sessions
 
     ##
