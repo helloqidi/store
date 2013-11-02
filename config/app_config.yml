@@ -1,9 +1,9 @@
 development: &default
   domain: "http://192.168.5.79:3000"
   session_secret: "1234567890abcdefghigklmnsdfewiruewpo-12i0.dsas90dojidco2"
-  site_title: "网站标题"
-  site_description: "网站描述"
-  site_keywords: "网站关键词"
+  site_title: "精品导购"
+  site_description: "做专业的导购网站"
+  site_keywords: "导购"
   site_error_info: "服务器忙，请稍候重试！"
   
 test: 
@@ -12,6 +12,3 @@ test:
 production:
   <<: *default
   domain: "http://www.helloqidi.com"
-  site_title: "运动客"
-  site_description: "做专业的"
-  site_keywords: "运动"
