@@ -1,0 +1,18 @@
+<p>
+errorno: <%= @return_json["errorno"]%>
+</p>
+<p>
+errormsg: <%= @return_json["errormsg"]%>
+</p>
+
+<hr>
+
+<% @return_json["data"].each do |data| %>
+  <p>
+  <%data.keys.each do |key|%>
+    <%=key%>:<%=data[key.to_s]%>
+    <br />
+  <%end%>
+  </p>
+  <hr>
+<% end%>
