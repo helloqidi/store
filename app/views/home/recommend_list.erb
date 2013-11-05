@@ -1,9 +1,16 @@
+<% content_for :jquery do %>
+function toggle_detail(element, type, scroll_id)
+{
+alert("1");
+}
+<% end %>
+
 <div class="row">
   <div class="span9">
 
     <ul>
       <% @recommends.each do |recommend| %>
-        <li style="border-bottom:1px solid #E6E6E6">
+        <li style="border-bottom:1px solid #E6E6E6" id="recommend-<%=recommend.id%>">
         <div class="list-header">
           <h4><%=recommend.title%><span class="orange"><%=recommend.sub_title%></span></h4>
           <p><span><%=format_time_with_hour(recommend.created_at)%></span><span class="fr"><%=link_to recommend.user.name,:class=>"orange"%>推荐</span></p>
@@ -40,7 +47,7 @@
   </div>
 
 
-  <div class="span3" style="background-color:yellow;">
-    右侧边栏
+  <div class="span3">
+    欢迎访问
   </div>
 </div>
