@@ -1,0 +1,6 @@
+<%if PADRINO_ENV=="development"%>
+  <%= stylesheet_link_tag "#{Settings[:domain_css]}/bootstrap/bootstrap.css","#{Settings[:domain_css]}/bootstrap/bootstrap-responsive.css",:media =>"screen"%>
+<%else%>
+  <%= stylesheet_link_tag "#{Settings[:domain_css]}/bootstrap/bootstrap.min.css","#{Settings[:domain_css]}/bootstrap/bootstrap-responsive.min.css",:media =>"screen"%>
+<%end%>
+<%= stylesheet_link_tag "#{Settings[:domain_css]}/base.css" %>

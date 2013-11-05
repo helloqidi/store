@@ -1,0 +1,10 @@
+<h2>商品标题</h2>
+<%= @item.title %>
+<br />
+<h2>商品描述</h2>
+<%= @item.description.html_safe %>
+<br />
+<h2>商品图片</h2>
+<% @item.photos.each do |photo| %>
+  <%= image_tag(photo.file.url(:small)) %> <br />
+<% end %>

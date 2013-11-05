@@ -1,5 +1,7 @@
 development: &default
-  domain: "http://192.168.5.79:3000"
+  domain: "http://127.0.0.1:3000"
+  domain_css: "http://127.0.0.1:3000/stylesheets"
+  domain_js: "http://127.0.0.1:3000/javascripts"
   session_secret: "1234567890abcdefghigklmnsdfewiruewpo-12i0.dsas90dojidco2"
   site_title: "精品导购"
   site_description: "做专业的导购网站"

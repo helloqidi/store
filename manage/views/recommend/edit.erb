@@ -1,0 +1,50 @@
+<% content_for :stylesheets do %>
+  <link type="text/css" rel="stylesheet" href="/ueditor/themes/default/css/ueditor.css">
+<% end %>
+
+<% content_for :javascripts do %>
+  <script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
+  <script type="text/javascript" src="/ueditor/ueditor.all.js"></script>
+  <script type="text/javascript">
+    //更多其他参数，请参考ueditor.config.js中的配置项
+    var options={
+      //上传路径
+      imageUrl:"/photo/upload",
+      //上传后的图片修正路径
+      imagePath:"", 
+      //工具栏
+      toolbars:[['fullScreen','source','preview','bold','italic','fontsize','fontfamily','forecolor','justifyleft','justifycenter','justifyright','link','unlink','insertimage']],
+      //默认的编辑区域高度
+      initialFrameHeight:300,
+      //关闭elementPath
+      elementPathEnabled:false,
+      //是否开启远程图片抓取
+      catchRemoteImageEnable:false
+    }
+    UE.getEditor('item_description',options);
+  </script>
+<% end %>
+
+<% content_for :jquery do %>
+  store.validateEditItemForm();
+<% end %>
+
+
+<div>
+  <% form_for @item, url(:item, :update, :id=>@item.id), :method=>:put, :multipart => true,:class=>"form-signin",:id=>"edit-item-form" do |f| %>
+    <h2 class="form-signin-heading mb-10">编辑商品</h2>
+    <%= f.text_field :title,:class=>"input-large",:placeholder=>"标题" %>
+    <%= f.text_area :description,:class=>"",:rows=>"8" %>
+    <br />
+    <% @item.photos.each do |photo| %>
+      <p id="area-<%=photo.id%>">
+      <%= image_tag(photo.file.url(:small)) %> <%= link_to "删除",url(:photo,:delete,:id=>photo.id),:method=>:delete,:remote=>true,:confirm=>"删除后将不能恢复，真要删除吗？" %>
+      </p>
+    <% end %>
+    <input id="photo_file" name="photo[file][]" type="file">
+    <input id="photo_file" name="photo[file][]" type="file">
+    <input id="photo_file" name="photo[file][]" type="file">
+    <br /><br />
+    <%= f.submit "保存",:class=>"btn btn-large btn-primary" %>
+  <% end %>
+</div>

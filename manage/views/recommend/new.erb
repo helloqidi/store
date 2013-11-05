@@ -1,0 +1,45 @@
+<% content_for :stylesheets do %>
+  <link type="text/css" rel="stylesheet" href="/ueditor/themes/default/css/ueditor.css">
+<% end %>
+
+<% content_for :javascripts do %>
+  <script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
+  <script type="text/javascript" src="/ueditor/ueditor.all.js"></script>
+  <script type="text/javascript">
+    //更多其他参数，请参考ueditor.config.js中的配置项
+    var options={
+      //上传路径
+      imageUrl:"/photo/upload",
+      //上传后的图片修正路径
+      imagePath:"", 
+      //工具栏
+      toolbars:[['fullScreen','source','preview','bold','italic','fontsize','fontfamily','forecolor','justifyleft','justifycenter','justifyright','link','unlink','insertimage']],
+      //默认的编辑区域高度
+      initialFrameHeight:300,
+      //关闭elementPath
+      elementPathEnabled:false,
+      //是否开启远程图片抓取
+      catchRemoteImageEnable:false
+    }
+    UE.getEditor('item_description',options);
+  </script>
+<% end %>
+
+<% content_for :jquery do %>
+  store.validateNewItemForm();
+<% end %>
+
+
+<div>
+  <% form_for @item, url(:item, :create),  :multipart => true,:class=>"form-signin",:id=>"new-item-form" do |f| %>
+    <h2 class="form-signin-heading mb-10">创建商品</h2>
+    <%= f.text_field :title,:class=>"input-large",:placeholder=>"标题" %>
+    <%= f.text_area :description,:class=>"",:rows=>"8",:placeholder=>"描述" %>
+    <br />
+    <input id="photo_file" name="photo[file][]" type="file">
+    <input id="photo_file" name="photo[file][]" type="file">
+    <input id="photo_file" name="photo[file][]" type="file">
+    <br /><br />
+    <%= f.submit "保存",:class=>"btn btn-large btn-primary" %>
+  <% end %>
+</div>

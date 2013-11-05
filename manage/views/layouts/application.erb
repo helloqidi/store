@@ -2,7 +2,7 @@
 <html lang="zh-CN">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title><%= @title ? "#{@title} - #{Settings[:site_title]}": Settings[:site_title] %></title>
+    <title><%= @title ? "#{@title} - 后台管理": "后台管理" %></title>
     <meta name="keywords" content="<%= @keywords || Settings[:site_keywords]%>" />
     <meta name="description" content="<%= @description || Settings[:site_description] %>">
     <meta name="author" content="HelloQidi">
@@ -10,13 +10,13 @@
 
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
 
-    <%= partial "meta_css",commonviews%>
+    <%= partial "meta_css",commonviews %>
     <%= yield_content :stylesheets %>
 
   </head>
   <body>
     <div class="container">
-      <%= partial "base/header"%>
+      <%= partial "base/header" %>
 
       <div class="alert alert-block fade in hide" id="alert-info">
         <button type="button" class="close" data-dismiss="alert">×</button>
@@ -26,8 +26,6 @@
 
       <%= yield %>
 
-
-      <%= partial "base/footer" %>
 
       <%= partial "meta_javascript",commonviews %>
       <%= yield_content :javascripts %>

@@ -1,0 +1,12 @@
+<taconite>
+<% if @success %>
+  <eval>
+    store.showSuccessInfo("<%=@note%>");
+    store.redirect("<%=@redirect_url%>",3);
+  </eval>
+<%else%>
+  <eval>
+    store.showErrorInfo("<%=@note%>");
+  </eval>
+<%end%>
+</taconite>

@@ -1,0 +1,9 @@
+<taconite>
+<% if @success %>
+  <remove select="#category-<%=@category.id%>" />
+<%else%>
+  <eval>
+    store.showErrorInfo("<%=@note%>");
+  </eval>
+<%end%>
+</taconite>

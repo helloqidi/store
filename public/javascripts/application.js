@@ -263,3 +263,27 @@ store.validateEditItemForm=function(){
     }
   });
 };
+
+
+/*
+ * 创建分类表单
+ * */
+store.validateNewCategoryForm=function(){
+  /* 表单验证 */
+  $("#new-category-form").validate({
+    rules:{
+      "category[name]":{
+        required: true
+      }
+    },
+    messages: {
+      "category[name]":{
+        required: "名称不能为空"
+      }
+    },
+    errorClass: "help-inline store-text-error",
+    submitHandler: function(form) {
+        $(form).ajaxSubmit({});
+    }
+  });
+};

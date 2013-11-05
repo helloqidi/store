@@ -16,5 +16,20 @@ module HelpersShow
       URI.join(Settings[:domain],string).to_s
     end
 
+    ##
+    # 全局views的目录
+    #
+    def commonviews
+      {:views=>commonviews_dir,:layout=>false}
+    end
+
+    def commonviews_with_layout
+      {:views=>commonviews_dir}
+    end
+
+    def commonviews_dir
+      "#{PADRINO_ROOT}/app/views/common"
+    end
+
   end
 end

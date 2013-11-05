@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   ##关系
+  has_many :recommends,     :foreign_key => "user_id"
 
   ##常量
   ROLE={

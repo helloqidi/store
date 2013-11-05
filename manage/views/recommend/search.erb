@@ -1,0 +1,21 @@
+<% content_for :stylesheets do %>
+  <style>
+    .result em{color:red;}
+  </style>
+<% end %>
+
+
+
+<h2>搜索结果:</h2>
+<br />
+<div class="result">
+<%@results.each_with_index do |result,index|%>
+  <%=index+1%>,
+
+  <%=link_to result.highlight.to_hash[:title].first.html_safe,url(:item,:show,:id=>result.id),:target=>"_blank"%>
+
+  <br />
+<%end%>
+</div>
+
+<%= (will_paginate @results).to_s.html_safe %>

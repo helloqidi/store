@@ -1,0 +1,28 @@
+<% content_for :jquery do %>
+  store.validateNewCategoryForm();
+<% end %>
+
+
+<div>
+  <% form_for @category, url(:category, :update, :id=>@category.id), :method=>:put, :class=>"form-horizontal",:id=>"new-category-form" do |f| %>
+    <div class="control-group">
+      <label class="control-label" for="inputEmail">名称</label>
+      <div class="controls">
+        <%= f.text_field :name, :class=>"input-large", :placeholder=>"名称", :id=>"inputEmail" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="inputPassword">父节点</label>
+      <div class="controls">
+        <%=f.select :parent_id, :class=>"span2", :options=>Category.roots.map{|m|[m.name,m.id]}, :include_blank=>["-无-" ,0], :id=>"inputPassword"%>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls">
+        <%= f.submit "保存",:class=>"btn btn-large btn-primary" %>
+        <a class="btn btn-large" href="javascript:history.go(-1);" >取消</a>
+      </div>
+    </div>
+  <%end%>
+</div>

@@ -6,14 +6,18 @@ class Photo < ActiveRecord::Base
 
   ##关系
   belongs_to :item, :foreign_key=>"related_id"
-
+  belongs_to :recommend, :foreign_key=>"related_id"
 
   ##常量
   SORT={
     #商品主图
     :item_main=>1,
     #商品描述图
-    :item_desc=>2
+    :item_desc=>2,
+    #推荐主图
+    :recommend_main => 3,
+    #推荐描述图
+    :recommend_desc => 4
   }
   #是否被引用
   QUOTE={
