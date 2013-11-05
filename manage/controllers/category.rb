@@ -2,6 +2,7 @@
 Store::Manage.controllers :category do
 
   before do
+    authenticate_admin
     @css_category_admin = true
   end
 

@@ -33,7 +33,33 @@ module HelpersAuth
     #禁止访问的跳转
     def deny_access
       flash[:error] ="请先登录！"
-      redirect url(:account,:login)
+      redirect Store::App.url(:account,:login)
+    end
+
+    ## 管理员以上权限
+    def authenticate_admin
+      deny_access_admin unless admin?
+    end
+  
+    #禁止访问
+    def deny_access_admin
+      flash[:notice] = "访问路径不存在!"
+      redirect Store::App.url(:home,:index)
+    end
+
+    #是否管理员
+    def admin?
+      return false if current_user.blank?      
+      return true if current_user.role == User::ROLE[:admin]
+      return true if system?
+      return false
+    end
+
+    #是否超级用户
+    def system?
+      return false if current_user.blank?      
+      return true if current_user.role == User::ROLE[:system]
+      return false      
     end
 
   end

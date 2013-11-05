@@ -2,6 +2,7 @@
 Store::Manage.controllers :recommend do
 
   before do
+    authenticate_admin
     @css_recommend_admin = true
   end
 
@@ -101,8 +102,5 @@ Store::Manage.controllers :recommend do
     content_type 'text/xml'
     render "recommend/delete"
   end
-
-
-
 
 end
