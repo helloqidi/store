@@ -21,7 +21,7 @@ Store::Manage.controllers :recommend do
   #新建保存
   post :create do
     logger.debug(params)
-    params[:recommend][:user_id] = 2
+    params[:recommend][:user_id] = current_user.id
 
     @recommend=Recommend.new(params[:recommend])
 

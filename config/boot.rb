@@ -21,6 +21,10 @@ Dir.glob(File.expand_path("#{PADRINO_ROOT}/locale", __FILE__) + '/**/*.yml').eac
   I18n.load_path << file
 end
 
+#will_paginate中文
+WillPaginate::ViewHelpers.pagination_options[:previous_label] = '« 上一页'
+WillPaginate::ViewHelpers.pagination_options[:next_label] = '下一页 »'
+
 #
 # ## Configure your HTML5 data helpers
 #

@@ -25,6 +25,23 @@
 /* vertical/text align end */
 
 
+/* color start */
+.l-gray{color:#999;}
+.d-gray{color:#666;}
+.black{color:#000;}
+.white{color:#fff;}
+.blue{color:#ee0000;}
+.orange{color:#ee0000;}
+.red{color:#ee0000;}
+.green{color:#beee77;}
+.orange{color:#FF6D24}
+/* color end */
+
+/* float left*/
+.fl{float:left;display:inline;}
+.fr{float:right;display:inline;} 
+/* float end*/
+
 /****************分割线**********************/
 
 
@@ -66,3 +83,10 @@ body{
 }
 
 /*normal page end*/
+
+
+/*will_paginate 翻页 start*/
+.pagination{
+  clear:both;
+}
+/*will_paginate 翻页 end*/

@@ -35,5 +35,23 @@ module HelpersShow
       "active" if css.present?  
     end
 
+    #去掉html
+    def remove_html_tag(in_html)
+      in_html.gsub(/<\/?[^>]*>/, "")
+    end
+
+    def format_time(time)
+      time.strftime("%Y-%m-%d %H:%M:%S")
+    end
+
+    def format_time_with_hour(time)
+      time.strftime("%Y-%m-%d %H:%M")
+    end
+
+    def format_time_with_day(time)
+      time.strftime("%Y-%m-%d")
+    end
+
+
   end
 end

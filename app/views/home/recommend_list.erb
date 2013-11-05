@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="span9">
+
+    <ul>
+      <% @recommends.each do |recommend| %>
+        <li style="border-bottom:1px solid #E6E6E6">
+        <div class="list-header">
+          <h4><%=recommend.title%><span class="orange"><%=recommend.sub_title%></span></h4>
+          <p><span><%=format_time_with_hour(recommend.created_at)%></span><span class="fr"><%=link_to recommend.user.name,:class=>"orange"%>推荐</span></p>
+        </div>
+        <div class="list-body">
+          <div class="fl" style="text-align:center;">
+            <a href="http://www.123haitao.com/t/18630" target="_blank">
+              <% photo=recommend.photos.recommend_main.first %>
+              <%= image_tag(photo.file.url(:small)) %>
+            </a>
+            <br />
+            <%= link_to "购物直达",recommend.store_url,:target=>"_blank",:class=>"btn btn-info mt-10"%>
+          </div>
+
+          <div style="overflow:hidden;height:220px;">
+            <%=remove_html_tag(recommend.description)%>
+          </div>
+
+          <div>
+            <a style="display:block;text-align:right;" onclick="toggle_detail($(this),'show');">展开阅读</a>
+          </div>
+        </div>
+
+        <div class="list-footer">
+          标签:<%=recommend.tags%>
+        </div>
+        </li>
+      <% end %>
+    </ul>
+
+
+    <%= (will_paginate @recommends).to_s.html_safe %>
+
+  </div>
+
+
+  <div class="span3" style="background-color:yellow;">
+    右侧边栏
+  </div>
+</div>
