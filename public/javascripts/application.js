@@ -287,3 +287,41 @@ store.validateNewCategoryForm=function(){
     }
   });
 };
+
+/*
+ * 创建推荐表单
+ * */
+store.validateNewRecommendForm=function(){
+  /* 表单验证 */
+  $("#new-recommend-form").validate({
+    rules:{
+      "recommend[title]":{
+        required: true
+      },
+      "recommend[description]":{
+        required: true
+      },
+      "recommend[category_id]":{
+        required: true
+      }
+    },
+    messages: {
+      "recommend[title]":{
+        required: "标题不能为空"
+      },
+      "recommend[description]":{
+        required: "描述不能为空"
+      },
+      "recommend[category_id]":{
+        required: "分类不能为空"
+      }
+    },
+    errorClass: "help-inline store-text-error",
+    submitHandler: function(form) {
+      //增加富文本编辑框的验证
+      if($('#recommend_description').valid()!=false){
+        $(form).ajaxSubmit({});
+      }
+    }
+  });
+};

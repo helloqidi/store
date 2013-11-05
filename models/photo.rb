@@ -30,5 +30,7 @@ class Photo < ActiveRecord::Base
   validates :file, :presence=>true
   validates :sort, :presence=>true
   
+  ##过滤
+  scope :recommend_main, -> { where(sort: SORT[:recommend_main]) }
 
 end

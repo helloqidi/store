@@ -2,8 +2,8 @@
   <div class="navbar-inner">
     <a class="brand" href="#">管理后台</a>
     <ul class="nav">
-      <li class="active"><a href="#">分类管理</a></li>
-      <li><a href="#">推荐管理</a></li>
+      <li class="<%=css_active?(@css_category_admin)%>"><%= link_to "分类管理", url(:category, :list)%></li>
+      <li class="<%=css_active?(@css_recommend_admin)%>"><%= link_to "推荐管理", url(:recommend, :list)%></li>
       <li><a href="http://shijue.me" target="_blank">晒单管理</a></li>
       <li><a href="http://shijue.me" target="_blank">会员管理</a></li>
     </ul>

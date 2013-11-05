@@ -1,15 +1,24 @@
-<div>
-  <% form_tag url(:item,:search), :method => 'get' do %>
-    <%= text_field_tag :q,:placeholder=>"关键词"%>
-    <%= submit_tag "搜索" %>
-  <% end %>
-</div>
-
-<% @items.each_with_index do |item,index| %>
-  <%= index+1 %>，<%= link_to item.title,url(:item,:show,:id=>item.id),:target=>"_blank" %> <%= link_to "编辑",url(:item,:edit,:id=>item.id) %><br />
-<% end %>
-
-<%= (will_paginate @items).to_s.html_safe %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>标题</th>
+      <th>编辑操作</th>
+      <th>删除操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @recommends.each_with_index do |recommend,index| %>
+      <tr id="recommend-<%=recommend.id%>">
+        <td><%= index+1 %></td>
+        <td><%= recommend.title %></td>
+        <td><%= link_to "编辑", url(:recommend,:edit,:id=>recommend.id)%></td>
+        <td><%= link_to "删除",url(:recommend,:delete,:id=>recommend.id),:method=>:delete,:remote=>true,:confirm=>"删除后将不能恢复，真要删除吗？" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= (will_paginate @recommends).to_s.html_safe %>
 <p>
-<%= link_to "创建",url(:item,:new),:target=>"_blank" %>
+<%= link_to "创建",url(:recommend,:new) %>
 </p>

@@ -31,5 +31,9 @@ module HelpersShow
       "#{PADRINO_ROOT}/app/views/common"
     end
 
+    def css_active?(css)
+      "active" if css.present?  
+    end
+
   end
 end

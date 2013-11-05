@@ -6,15 +6,15 @@
 <div>
   <% form_for @category, url(:category, :create),:class=>"form-horizontal",:id=>"new-category-form" do |f| %>
     <div class="control-group">
-      <label class="control-label" for="inputEmail">名称</label>
+      <label class="control-label" for="category_name">名称</label>
       <div class="controls">
-        <%= f.text_field :name, :class=>"input-large", :placeholder=>"名称", :id=>"inputEmail" %>
+        <%= f.text_field :name, :class=>"input-large", :placeholder=>"名称" %>
       </div>
     </div>
     <div class="control-group">
-      <label class="control-label" for="inputPassword">父节点</label>
+      <label class="control-label" for="category_parent_id">父节点</label>
       <div class="controls">
-        <%=f.select :parent_id, :class=>"span2", :options=>Category.roots.map{|m|[m.name,m.id]}, :include_blank=>["-无-" ,0], :id=>"inputPassword"%>
+        <%=f.select :parent_id, :class=>"span2", :options=>Category.roots.map{|m|[m.name,m.id]}, :include_blank=>["-无-" ,0]%>
       </div>
     </div>
 

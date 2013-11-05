@@ -14,12 +14,19 @@ class Category < ActiveRecord::Base
   before_validation :default_values
 
   ##过滤
-  scope :roots, -> { where(parent_id: 0) }
+  scope :roots, -> { where(level: 1) }
+  scope :seconds, -> { where(level: 2) }
 
   private
   def default_values
     self.parent_id ||= 0
-    self.level ||= 1
+
+    #暂时只有两个级别
+    if self.parent_id == 0
+      self.level = 1
+    else
+      self.level = 2
+    end
   end
 
 end

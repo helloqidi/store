@@ -1,6 +1,10 @@
 # encoding: utf-8
 Store::Manage.controllers :category do
 
+  before do
+    @css_category_admin = true
+  end
+
   #列表
   get :list do
     @categories = Category.paginate(:page => params[:page], :per_page => 15)

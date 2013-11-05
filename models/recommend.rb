@@ -2,7 +2,7 @@
 class Recommend < ActiveRecord::Base
 
   ##关系
-  has_many :photos,     :foreign_key => "related_id"
+  has_many :photos,     :foreign_key => "related_id",   dependent: :destroy
   belongs_to :user,     :foreign_key => "user_id"
   belongs_to :category, :foreign_key => "category_id"
 
