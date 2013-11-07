@@ -3,7 +3,7 @@
 git fetch
 git merge origin/master
 bundle install
-padrino rake ar:migrate
+padrino rake ar:migrate -e production
 ./rainbows.sh restart
 
 
