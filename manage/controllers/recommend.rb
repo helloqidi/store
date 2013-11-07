@@ -118,4 +118,21 @@ Store::Manage.controllers :recommend do
     render "recommend/set_publish"
   end
 
+  #批量发布
+  post :publish, :csrf_protection => false do
+    logger.debug(params)
+
+    @ids = params[:ids]
+    @ids.split(',').each do |id|
+      recommend = Recommend.find_by_id(id)
+      if recommend.present? && !recommend.published?
+        recommend.update_attribute(:status, Recommend::STATUS[:published])
+      end
+    end
+    @note = "发布成功"
+
+    content_type "text/xml"
+    render "recommend/publish"
+  end
+
 end

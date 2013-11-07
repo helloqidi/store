@@ -1,0 +1,10 @@
+<taconite>
+  <%@ids.split(',').each do |id|%>
+    <replaceContent select="#recommend-<%=id%> .recommend-operate">
+      无
+    </replaceContent>
+  <%end%>
+  <eval>
+    store.showSuccessInfo("<%=@note%>");
+  </eval>
+</taconite>
