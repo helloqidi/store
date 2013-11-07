@@ -344,7 +344,7 @@ store.listToggleLink=function(){
     var originalSrc = $recommendImg.attr("src");
     $recommendImg.attr("src",$recommendImg.attr("backup_src"));
     $recommendImg.attr("backup_src",originalSrc);
-    $recommendImg.attr("width","780px");
+    $recommendImg.attr("width",$recommendImg.attr("backup_width"));
 
     return false;
   });

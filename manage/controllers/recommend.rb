@@ -103,4 +103,19 @@ Store::Manage.controllers :recommend do
     render "recommend/delete"
   end
 
+
+  #发布
+  put :set_publish, :with => :id, :csrf_protection => false do
+    @recommend = Recommend.find_by_id(params[:id])
+    if @recommend.update_attribute(:status, Recommend::STATUS[:published])
+      @success =  true
+    else
+      @success = false
+      @note = "服务器忙,请稍候重试"
+    end
+
+    content_type 'text/xml'
+    render "recommend/set_publish"
+  end
+
 end

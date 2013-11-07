@@ -27,7 +27,8 @@
             <a href="<%=url(:recommend,:show,:id=>recommend.id)%>" target="_blank">
               <% photo=recommend.photos.recommend_main.first %>
               <% if photo.present?%>
-                <%= image_tag( photo.file.url(:small),:width=>"180px",:backup_src=>photo.file.url(:big),:recommend_id=>recommend.id ) %>
+                <% photo_width= photo.width_big.present? ? "#{photo.width_big}px" : "780px" %>
+                <%= image_tag( photo.file.url(:small),:width=>"180px",:backup_src=>photo.file.url(:big),:backup_width=>photo_width,:recommend_id=>recommend.id) %>
               <%end%>
             </a>
             <br />

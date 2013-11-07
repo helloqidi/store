@@ -43,6 +43,17 @@ class Recommend < ActiveRecord::Base
   before_validation :default_values
   before_save :save_desc_text
 
+  ##过滤
+  scope :draft, -> { where(status: STATUS[:draft]) }
+  scope :published, -> { where(status: STATUS[:published]) }
+
+
+  #是否已经发布了
+  def published?
+    return true if self.status == STATUS[:published]
+    false
+  end
+
   private
   def default_values
     self.status ||= STATUS[:draft]

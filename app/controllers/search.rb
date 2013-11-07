@@ -18,6 +18,8 @@ Store::App.controllers :search do
     search=Tire.search('recommends') do
       query do
         match  [:title, :desc_text], "#{key_word}"
+        #必须是发布的
+        match :status, Recommend::STATUS[:published]
       end
       highlight :title, :desc_text
       from (page-1)*per
