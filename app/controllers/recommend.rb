@@ -1,6 +1,11 @@
 # encoding: utf-8
 Store::App.controllers :recommend do
 
+  before do
+    @css_recommend = true
+  end
+
+
   #推荐内容的展示页面
   get :show, :with => :id do
     @recommend = Recommend.find_by_id(params[:id])

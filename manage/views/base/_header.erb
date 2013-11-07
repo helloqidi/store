@@ -1,6 +1,6 @@
 <div class="navbar">
   <div class="navbar-inner">
-    <%= link_to "管理后台",Store::App.url(:home,:index),:class=>"brand"%>
+    <%= link_to "管理后台",Settings[:domain],:class=>"brand"%>
     <ul class="nav">
       <li class="<%=css_active?(@css_category_admin)%>"><%= link_to "分类管理", url(:category, :list)%></li>
       <li class="<%=css_active?(@css_recommend_admin)%>"><%= link_to "推荐管理", url(:recommend, :list)%></li>
