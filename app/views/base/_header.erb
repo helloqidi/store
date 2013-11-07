@@ -18,12 +18,12 @@
     <% end %>
     </p>
 
-    <form class="navbar-form form-search">
+    <% form_tag url(:search,:content), :method => 'get', :class=>"navbar-form form-search" do %>
       <div class="input-append">
-        <input type="text" class="span2 search-query" placeholder="搜索商品">
+        <%= text_field_tag :q,:class=>"span2 search-query",:placeholder=>"搜索商品"%>
         <button type="submit" class="btn"><i class="icon-search"></i></button>
       </div>
-    </form>
+    <% end %>
 
   </div>
 </div>

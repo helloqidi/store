@@ -3,7 +3,7 @@ class Item < ActiveRecord::Base
   include Tire::Model::Search
   include Tire::Model::Callbacks
 
-  ##Tire搜索
+  ##Tire搜索   https://github.com/karmi/retire
   #1,自动管理索引
   #使用 include Tire::Model::Callbacks后
   #(1)自动在create/destroy时建立/删除索引;
@@ -27,7 +27,7 @@ class Item < ActiveRecord::Base
   #Tire.index("items").import(Item.all)
   #
   #3,搜索方法
-  #参考 https://github.com/karmi/tire/tree/master/test/integration
+  #参考 https://github.com/karmi/retire/tree/master/test/integration
   #
   #
   #4,mapping指定索引字段(无论是自动/手动)

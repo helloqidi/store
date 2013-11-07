@@ -109,7 +109,7 @@ Store::App.controllers :item do
     page=(params[:page] || 1).to_i
     per=2
 
-    #参考 https://github.com/karmi/tire/tree/master/test/integration
+    #参考 https://github.com/karmi/retire/tree/master/test/integration
     search=Tire.search('items') do
       query do
         match :title, "#{key_word}"

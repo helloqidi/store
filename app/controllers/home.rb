@@ -19,7 +19,7 @@ Store::App.controllers :home do
 
   #所有推荐内容
   get :recommend, :map=>"/" do
-    @recommends = Recommend.paginate(:page => params[:page], :per_page => 2)
+    @recommends = Recommend.paginate(:page => params[:page], :per_page => 15)
 
     render "home/recommend_list"
   end

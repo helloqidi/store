@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 11) do
+ActiveRecord::Schema.define(:version => 12) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",                    :null => false
@@ -41,22 +41,23 @@ ActiveRecord::Schema.define(:version => 11) do
   end
 
   create_table "recommends", :force => true do |t|
-    t.string   "title",                            :null => false
+    t.string   "title",                              :null => false
     t.string   "sub_title"
-    t.text     "description",  :limit => 16777215, :null => false
-    t.integer  "status",       :limit => 3,        :null => false
-    t.integer  "sort",         :limit => 3,        :null => false
+    t.text     "description",  :limit => 16777215,   :null => false
+    t.integer  "status",       :limit => 3,          :null => false
+    t.integer  "sort",         :limit => 3,          :null => false
     t.string   "tags"
-    t.integer  "category_id",                      :null => false
-    t.integer  "user_id",                          :null => false
+    t.integer  "category_id",                        :null => false
+    t.integer  "user_id",                            :null => false
     t.string   "store_url"
     t.string   "store_name"
     t.integer  "comment_cnt"
     t.integer  "up_cnt"
     t.integer  "down_cnt"
     t.integer  "favorite_cnt"
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.text     "desc_text",    :limit => 2147483647
   end
 
   create_table "users", :force => true do |t|

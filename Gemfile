@@ -19,6 +19,7 @@ gem 'rest-client', '~> 1.6.7'
 #如果遇到nokogiri在服务器上用bundle:install不成功.可直接在服务器上 NOKOGIRI_USE_SYSTEM_LIBRARIES=true gem install nokogiri,此处通过path参数直接引用安装好的gem路径
 gem 'nokogiri', '~> 1.6.0'
 #full-text search
+#github地址 https://github.com/karmi/retire
 gem 'tire', '~> 0.6.0'
 gem 'will_paginate', '~> 3.0.4', :require => ['will_paginate/active_record', 'will_paginate/view_helpers/sinatra']
 #compress js/css

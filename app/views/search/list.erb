@@ -1,0 +1,46 @@
+<% content_for :stylesheets do %>
+  <style>
+    .result em{color:red;}
+  </style>
+<% end %>
+
+
+<div class="row">
+  <div class="span12">
+
+    <h3>搜索结果</h3>
+    <%if @results.count == 0%>
+      没有找到哦，亲
+    <%else%>
+      <div class="result">
+        <ul>
+          <%@results.each_with_index do |result,index|%>
+            <%recommend_this = Recommend.find_by_id(result.id)%>
+            <li>
+            <h4>
+              <%if result.highlight.to_hash[:title].present?%>
+                <%=link_to result.highlight.to_hash[:title].first.html_safe,url(:recommend,:show,:id=>result.id),:target=>"_blank"%>
+              <%else%>
+                <%if recommend_this.present?%>
+                  <%=link_to recommend_this.title,url(:recommend,:show,:id=>result.id),:target=>"_blank"%>
+                <%end%>
+              <%end%>
+            </h4>
+            <div>
+              <%if result.highlight.to_hash[:desc_text].present?%>
+                <strong>推荐理由：</strong><%=result.highlight.to_hash[:desc_text].first.html_safe%>
+              <%else%>
+                <%if recommend_this.present?%>
+                  <strong>推荐理由：</strong><%=truncate(recommend_this.desc_text, :length => 100)%>
+                <%end%>
+              <%end%>
+            </div>
+            </li>
+          <%end%>
+        </ul>
+      </div>
+    <%end%>
+
+    <%= (will_paginate @results).to_s.html_safe %>
+  </div>
+</div>
