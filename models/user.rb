@@ -29,6 +29,9 @@ class User < ActiveRecord::Base
   validates :role, :numericality=>{:only_integer=>true}
 
 
+  scope :no_system, -> {where("role!=3")}
+
+
   ##回调
   before_validation :default_values
   before_create :encrypt_password
@@ -67,6 +70,25 @@ class User < ActiveRecord::Base
     return 0, ""
   end
 
+  #角色名称
+  def role_name
+    if self.role == ROLE[:user]
+      "普通用户"
+    elsif self.role == ROLE[:admin]
+      "管理员"
+    else
+      "其他"
+    end
+  end
+
+  #是否管理员
+  def admin?
+    if self.role == ROLE[:user]
+      false
+    else
+      true
+    end
+  end
 
   private
   def encrypt_password

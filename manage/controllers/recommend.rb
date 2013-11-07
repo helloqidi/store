@@ -7,7 +7,7 @@ Store::Manage.controllers :recommend do
   end
 
   #列表
-  get :list do
+  get :list, :map => "/" do
     @recommends = Recommend.paginate(:page => params[:page], :per_page => 15)
     render "recommend/list"
   end
@@ -53,7 +53,7 @@ Store::Manage.controllers :recommend do
 
   #编辑
   get :edit, :with => :id do
-    @recommend = Recommend.find(params[:id])
+    @recommend = Recommend.find_by_id(params[:id])
     render "recommend/edit"
   end
 
@@ -61,7 +61,7 @@ Store::Manage.controllers :recommend do
   put :update,:with=>:id do
     logger.debug(params)
     
-    @recommend=Recommend.find(params[:id])
+    @recommend=Recommend.find_by_id(params[:id])
 
     begin
       #事务处理
@@ -92,7 +92,7 @@ Store::Manage.controllers :recommend do
 
   #删除
   delete :delete,:with=>:id, :csrf_protection => false do
-    @recommend = Recommend.find(params[:id])
+    @recommend = Recommend.find_by_id(params[:id])
     if @recommend.destroy
       @success=true
     else

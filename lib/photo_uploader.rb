@@ -47,4 +47,17 @@ class PhotoUploader < CarrierWave::Uploader::Base
   def extension_white_list
     %w(jpg jpeg gif png)
   end
+
+  def geometry
+    @geometry ||= get_geometry
+  end
+
+  def get_geometry
+    logger.debug("--------")
+    if @file
+      img = ::MiniMagick::Image::open(@file.file)
+      geometry = { width: img[:width], height: img[:height] }
+    end
+  end
+
 end

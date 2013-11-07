@@ -46,7 +46,7 @@ Store::App.controllers :item do
 
   #商品展示
   get :show, :with=>:id do
-    @item=Item.find(params[:id].to_i)
+    @item=Item.find_by_id(params[:id].to_i)
     render "item/show"
   end
 
@@ -58,7 +58,7 @@ Store::App.controllers :item do
 
   #编辑页面
   get :edit, :with=>:id do
-    @item=Item.find(params[:id])
+    @item=Item.find_by_id(params[:id])
     render "item/edit"
   end
 
@@ -66,7 +66,7 @@ Store::App.controllers :item do
   put :update,:with=>:id do
     logger.debug(params)
     
-    @item=Item.find(params[:id])
+    @item=Item.find_by_id(params[:id])
 
     begin
       #事务处理

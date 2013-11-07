@@ -3,7 +3,7 @@ Store::App.controllers :photo do
 
   #删除图片
   delete :delete,:with=>:id, :csrf_protection => false do
-    @photo=Photo.find(params[:id])
+    @photo=Photo.find_by_id(params[:id])
     if @photo.destroy
       @success=true
     else

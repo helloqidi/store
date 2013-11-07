@@ -1,7 +1,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th>#</th>
+      <th>id</th>
       <th>名称</th>
       <th>编辑操作</th>
       <th>删除操作</th>
@@ -10,7 +10,7 @@
   <tbody>
     <% @categories.each_with_index do |category,index| %>
       <tr id="category-<%=category.id%>">
-        <td><%= index+1 %></td>
+        <td><%= category.id %></td>
         <td><%= category.name %></td>
         <td><%= link_to "编辑",url(:category,:edit,:id=>category.id) %></td>
         <td><%= link_to "删除",url(:category,:delete,:id=>category.id),:method=>:delete,:remote=>true,:confirm=>"删除后将不能恢复，真要删除吗？" %></td>

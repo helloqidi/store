@@ -66,7 +66,7 @@ Store::App.controllers :account do
   #修改资料后的提交
   put :update_profile do
     logger.debug(params)
-    @user=User.find(params[:id])
+    @user=User.find_by_id(params[:id])
     if @user.blank?
       @success=false
       @note="该用户不存在！"

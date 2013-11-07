@@ -1,0 +1,27 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>用户名</th>
+      <th>创建时间</th>
+      <th>角色</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each_with_index do |user,index| %>
+      <tr id="user-<%=user.id%>">
+        <td><%= user.name %></td>
+        <td><%= format_time(user.created_at) %></td>
+        <td class="user-role-name"><%= user.role_name %></td>
+        <td class="user-operate">
+          <%if user.admin?%>
+            无
+          <%else%>
+            <%= link_to "设为管理员",url(:user,:set_admin,:id=>user.id),:method=>:put,:remote=>true,:confirm=>"确定要设置为管理员吗？" %>
+          <%end%>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= (will_paginate @users).to_s.html_safe %>

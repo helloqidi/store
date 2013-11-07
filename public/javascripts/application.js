@@ -21,6 +21,7 @@ store.initial=function(){
   //placeholder属性插件
   $('input, textarea').placeholder();
   store.versionIEWarn();
+  store.listToggleLink();
 };
 
 
@@ -324,4 +325,38 @@ store.validateNewRecommendForm=function(){
       }
     }
   });
+};
+
+/*展开/收起阅读*/
+store.listToggleLink=function(){
+  //展开
+  $('body').on('click',"a.list-show-link",function() {
+    //文字
+    $(this).text("收起");
+    $recommend_desc = $(this).parent().prev("div.recommend_desc");
+    $recommend_desc.css("height","100%").css("min-height","220px");
+    $(this).toggleClass("list-show-link");
+    $(this).toggleClass("list-hide-link");
+    //图片
+    $recommend_photo = $recommend_desc.prev('.recommend-photo');
+    $recommend_photo.removeClass("fl");
+
+    return false;
+  });
+
+  //收起
+  $('body').on('click',"a.list-hide-link",function() {
+    //文字
+    $(this).text("展开阅读");
+    $recommend_desc = $(this).parent().prev("div.recommend_desc");
+    $recommend_desc.css("height","220px");
+    $(this).toggleClass("list-show-link");
+    $(this).toggleClass("list-hide-link");
+    //图片
+    $recommend_photo = $recommend_desc.prev('.recommend-photo');
+    $recommend_photo.addClass("fl");
+
+    return false;
+  });
+
 };

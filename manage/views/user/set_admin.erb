@@ -1,0 +1,14 @@
+<taconite>
+<% if @success %>
+  <replaceContent select="#user-<%=@user.id%> .user-role-name">
+    管理员
+  </replaceContent>
+  <replaceContent select="#user-<%=@user.id%> .user-operate">
+    无
+  </replaceContent>
+<%else%>
+  <eval>
+    store.showErrorInfo("<%=@note%>");
+  </eval>
+<%end%>
+</taconite>

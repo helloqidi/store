@@ -1,0 +1,23 @@
+<% content_for :jquery do %>
+<% end %>
+
+<div class="row">
+  <div class="span9" style="background-color:#fff;">
+    <div>
+      <h3><%=@recommend.title%><span class="orange"><%=@recommend.sub_title%></span></h3>
+      <div>
+        <%=@recommend.description.html_safe%>
+      </div>
+
+      <div>
+        标签:<%=@recommend.tags%>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="span3">
+    <h4>推荐人：<%=@recommend.user.name%></h4>
+  </div>
+</div>

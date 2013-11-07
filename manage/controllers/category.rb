@@ -14,7 +14,7 @@ Store::Manage.controllers :category do
 
   #编辑
   get :edit, :with => :id do
-    @category = Category.find(params[:id].to_i)
+    @category = Category.find_by_id(params[:id].to_i)
     render "category/edit"
   end
 
@@ -22,7 +22,7 @@ Store::Manage.controllers :category do
   put :update, :with => :id do
     logger.debug(params)
 
-    @category = Category.find(params[:id])
+    @category = Category.find_by_id(params[:id])
     if @category.update_attributes!(params[:category])
       @success=true
       @note="修改成功！"
@@ -66,7 +66,7 @@ Store::Manage.controllers :category do
 
   #删除
   delete :delete,:with=>:id, :csrf_protection => false do
-    @category = Category.find(params[:id])
+    @category = Category.find_by_id(params[:id])
     if @category.destroy
       @success=true
     else

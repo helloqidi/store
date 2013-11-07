@@ -33,4 +33,18 @@ class Photo < ActiveRecord::Base
   ##过滤
   scope :recommend_main, -> { where(sort: SORT[:recommend_main]) }
 
+
+  before_save :save_image_dimensions
+
+
+  private
+
+    def save_image_dimensions
+      logger.debug("========")
+      if file_changed?
+        logger.debug("width:#{file.geometry[:width]}")
+        logger.debug("height:#{file.geometry[:height]}")
+      end
+    end
+
 end
