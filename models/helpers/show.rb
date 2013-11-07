@@ -52,6 +52,10 @@ module HelpersShow
       time.strftime("%Y-%m-%d")
     end
 
+    #拆分标签
+    def tag_array_from_string(string)
+      string.split(/[,，]*[,，]/).uniq
+    end
 
   end
 end

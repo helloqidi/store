@@ -333,18 +333,18 @@ store.listToggleLink=function(){
   $('body').on('click',"a.list-show-link",function() {
     //文字
     $(this).text("收起");
-    $recommend_desc = $(this).parent().prev("div.recommend_desc");
-    $recommend_desc.css("height","100%").css("min-height","220px");
+    $recommendDesc = $(this).parent().prev("div.recommend-desc");
+    $recommendDesc.css("height","100%").css("min-height","220px");
     $(this).toggleClass("list-show-link");
     $(this).toggleClass("list-hide-link");
     //图片
-    $recommend_photo = $recommend_desc.prev('.recommend-photo');
-    $recommend_photo.removeClass("fl");
-    $recommend_img = $recommend_photo.find("img").first();
-    var original_src = $recommend_img.attr("src");
-    $recommend_img.attr("src",$recommend_img.attr("backup_src"));
-    $recommend_img.attr("backup_src",original_src);
-    $recommend_img.attr("width","780px");
+    $recommendPhoto = $recommendDesc.prev('.recommend-photo');
+    $recommendPhoto.removeClass("fl");
+    $recommendImg = $recommendPhoto.find("img").first();
+    var originalSrc = $recommendImg.attr("src");
+    $recommendImg.attr("src",$recommendImg.attr("backup_src"));
+    $recommendImg.attr("backup_src",originalSrc);
+    $recommendImg.attr("width","780px");
 
     return false;
   });
@@ -353,19 +353,19 @@ store.listToggleLink=function(){
   $('body').on('click',"a.list-hide-link",function() {
     //文字
     $(this).text("展开阅读");
-    $recommend_desc = $(this).parent().prev("div.recommend_desc");
-    $recommend_desc.css("height","220px");
+    $recommendDesc = $(this).parent().prev("div.recommend-desc");
+    $recommendDesc.css("height","220px");
     $(this).toggleClass("list-show-link");
     $(this).toggleClass("list-hide-link");
     //图片
-    $recommend_photo = $recommend_desc.prev('.recommend-photo');
-    $recommend_photo.addClass("fl");
-    var original_src = $recommend_img.attr("src");
-    $recommend_img.attr("src",$recommend_img.attr("backup_src"));
-    $recommend_img.attr("backup_src",original_src);
-    $recommend_img.attr("width","180px");
+    $recommendPhoto = $recommendDesc.prev('.recommend-photo');
+    $recommendPhoto.addClass("fl");
+    var originalSrc = $recommendImg.attr("src");
+    $recommendImg.attr("src",$recommendImg.attr("backup_src"));
+    $recommendImg.attr("backup_src",originalSrc);
+    $recommendImg.attr("width","180px");
     //回滚
-    var scroll_id = $recommend_img.attr("recommend_id");
+    var scroll_id = $recommendImg.attr("recommend_id");
     $('html,body').animate({
         'scrollTop' : $('#recommend-'+scroll_id).offset().top
     });

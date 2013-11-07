@@ -1,23 +1,43 @@
 <% content_for :jquery do %>
 <% end %>
 
+<% content_for :stylesheets do %>
+  <style>
+    .span9{background-color:#fff;}
+    .recommend-show{margin:10px;}
+    .avatar-div{align:center;}
+  </style>
+<% end %>
+
 <div class="row">
-  <div class="span9" style="background-color:#fff;">
-    <div>
-      <h3><%=@recommend.title%><span class="orange"><%=@recommend.sub_title%></span></h3>
+  <div class="span9">
+    <div class="recommend-show">
+      <h4><%=@recommend.title%><span class="orange"><%=@recommend.sub_title%></span></h4>
+      <div>
+        <% tag_array = tag_array_from_string(@recommend.tags) %>
+        <% if tag_array.present? %>
+          <ul class="inline">
+            标签:
+            <%tag_array.each do |tag|%>
+              <li class="label label-info"><%=tag%></li>
+            <%end%>
+          </ul>
+        <% end %>
+      </div>
+
       <div>
         <%=@recommend.description.html_safe%>
       </div>
 
-      <div>
-        标签:<%=@recommend.tags%>
-      </div>
     </div>
 
   </div>
 
 
   <div class="span3">
-    <h4>推荐人：<%=@recommend.user.name%></h4>
+    <div class="avatar-div">
+      <%= image_tag(@recommend.user.avatar.url(:big),:width=>100,:height=>100) %>
+    </div>
+    <h4>推荐人：<span class="orange"><%=@recommend.user.name%></span></h4>
   </div>
 </div>

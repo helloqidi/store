@@ -1,37 +1,58 @@
 <% content_for :jquery do %>
 <% end %>
 
+<% content_for :stylesheets do %>
+  <style>
+    .list-header a{text-decoration:none;}
+    .list-li{border-bottom:1px solid #E6E6E6;}
+    .recommend-photo{text-align:center;}
+    .recommend-desc{overflow:hidden;height:220px;}
+    .list-show-link,.list-hide-link{display:block;text-align:right;}
+  </style>
+<% end %>
+
+
 <div class="row">
   <div class="span9">
 
-    <ul>
+    <ul class="unstyled">
       <% @recommends.each do |recommend| %>
-        <li style="border-bottom:1px solid #E6E6E6" id="recommend-<%=recommend.id%>">
+        <li class="list-li" id="recommend-<%=recommend.id%>">
         <div class="list-header">
           <h4><%=link_to recommend.title,url(:recommend,:show,:id=>recommend.id),:target=>"_blank"%><span class="orange"><%=recommend.sub_title%></span></h4>
           <p><span><%=format_time_with_hour(recommend.created_at)%></span><span class="fr"><%=link_to recommend.user.name,:class=>"orange"%>推荐</span></p>
         </div>
         <div class="list-body">
-          <div class="recommend-photo fl" style="text-align:center;">
+          <div class="recommend-photo fl">
             <a href="<%=url(:recommend,:show,:id=>recommend.id)%>" target="_blank">
               <% photo=recommend.photos.recommend_main.first %>
-              <%= image_tag( photo.file.url(:small),:width=>"180px",:backup_src=>photo.file.url(:big),:recommend_id=>recommend.id ) %>
+              <% if photo.present?%>
+                <%= image_tag( photo.file.url(:small),:width=>"180px",:backup_src=>photo.file.url(:big),:recommend_id=>recommend.id ) %>
+              <%end%>
             </a>
             <br />
             <%= link_to "购物直达",recommend.store_url,:target=>"_blank",:class=>"btn btn-info mt-10"%>
           </div>
 
-          <div class="recommend_desc" style="overflow:hidden;height:220px;">
-            <%=remove_html_tag(recommend.description)%>
+          <div class="recommend-desc">
+            <%=recommend.desc_text%>
           </div>
 
           <div>
-            <a href="#" style="display:block;text-align:right;" class="list-show-link" >展开阅读</a>
+            <a href="#" class="list-show-link" >展开阅读</a>
           </div>
         </div>
 
         <div class="list-footer">
-          标签:<%=recommend.tags%>
+          <% tag_array = tag_array_from_string(recommend.tags) %>
+          <% if tag_array.present? %>
+            <ul class="inline">
+              标签:
+              <%tag_array.each do |tag|%>
+                <li class="label label-info"><%=tag%></li>
+              <%end%>
+            </ul>
+          <% end %>
         </div>
         </li>
       <% end %>
