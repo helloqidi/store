@@ -6,7 +6,6 @@
 <div>
   <% form_for current_user, url(:account, :update_profile, :id => current_user.id), :method => :put,  :multipart => true,:class=>"form-signin",:id=>"profile-form" do |f| %>
     <h2 class="form-signin-heading mb-10">修改个人资料</h2>
-    <%= f.text_field :email,:class=>"input-large",:placeholder=>"邮箱" %>
     <%= f.text_field :name,:class=>"input-large",:placeholder=>"昵称" %>
     <br />
     <%= image_tag(current_user.avatar.url(:big),:id=>"user-avatar") %>

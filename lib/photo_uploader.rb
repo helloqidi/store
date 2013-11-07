@@ -5,7 +5,8 @@ class PhotoUploader < CarrierWave::Uploader::Base
   #存储在文件中
   storage :file
 
- 
+  process :store_geometry_original
+
   version :small do
     #resize_to_fill会裁剪宽度和高度都为180(貌似是居中裁剪)
     #process :resize_to_fill => [180, 180]
@@ -13,14 +14,17 @@ class PhotoUploader < CarrierWave::Uploader::Base
     #process :resize_to_fit => [180, 180]
     #resize_to_limit与resize_to_fit的效果类似,但它的优点是可以把宽度或者高度中任何一项设置为nil,以确定是按照宽度还是高度进行等比例裁剪
     process :resize_to_limit=>[180,180]
+    process :store_geometry_small
   end
 
   version :middle do
     process :resize_to_limit => [380, nil]
+    process :store_geometry_middle
   end
   
   version :big do
     process :resize_to_limit => [780, nil]
+    process :store_geometry_big
   end
 
 
@@ -48,16 +52,37 @@ class PhotoUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-  def geometry
-    @geometry ||= get_geometry
-  end
+  #存储尺寸
+  def store_geometry(size)
+    return unless @file
+    return unless model
 
-  def get_geometry
-    logger.debug("--------")
-    if @file
-      img = ::MiniMagick::Image::open(@file.file)
-      geometry = { width: img[:width], height: img[:height] }
+    image = ::MiniMagick::Image::open(@file.file)
+    if size == "big"
+      model.width_big = image[:width]
+      model.height_big = image[:height]
+    elsif size == "middle"
+      model.width_middle = image[:width]
+      model.height_middle = image[:height]
+    elsif size == "small"
+      model.width_small = image[:width]
+      model.height_small = image[:height]
+    else
+      model.width = image[:width]
+      model.height = image[:height]
     end
   end
 
+  def store_geometry_original
+    self.store_geometry("original")
+  end
+  def store_geometry_big
+    self.store_geometry("big")
+  end
+  def store_geometry_middle
+    self.store_geometry("middle")
+  end
+  def store_geometry_small
+    self.store_geometry("small")
+  end
 end

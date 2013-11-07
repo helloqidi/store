@@ -340,6 +340,11 @@ store.listToggleLink=function(){
     //图片
     $recommend_photo = $recommend_desc.prev('.recommend-photo');
     $recommend_photo.removeClass("fl");
+    $recommend_img = $recommend_photo.find("img").first();
+    var original_src = $recommend_img.attr("src");
+    $recommend_img.attr("src",$recommend_img.attr("backup_src"));
+    $recommend_img.attr("backup_src",original_src);
+    $recommend_img.attr("width","780px");
 
     return false;
   });
@@ -355,6 +360,15 @@ store.listToggleLink=function(){
     //图片
     $recommend_photo = $recommend_desc.prev('.recommend-photo');
     $recommend_photo.addClass("fl");
+    var original_src = $recommend_img.attr("src");
+    $recommend_img.attr("src",$recommend_img.attr("backup_src"));
+    $recommend_img.attr("backup_src",original_src);
+    $recommend_img.attr("width","180px");
+    //回滚
+    var scroll_id = $recommend_img.attr("recommend_id");
+    $('html,body').animate({
+        'scrollTop' : $('#recommend-'+scroll_id).offset().top
+    });
 
     return false;
   });

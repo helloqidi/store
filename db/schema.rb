@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 12) do
+ActiveRecord::Schema.define(:version => 13) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",                    :null => false
@@ -31,13 +31,21 @@ ActiveRecord::Schema.define(:version => 12) do
 
   create_table "photos", :force => true do |t|
     t.integer  "related_id"
-    t.string   "file",                     :null => false
-    t.integer  "sort",       :limit => 3,  :null => false
-    t.string   "file_type",  :limit => 10
+    t.string   "file",                        :null => false
+    t.integer  "sort",          :limit => 3,  :null => false
+    t.string   "file_type",     :limit => 10
     t.integer  "file_size"
-    t.datetime "created_at",               :null => false
-    t.datetime "updated_at",               :null => false
-    t.integer  "quote",      :limit => 1
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.integer  "quote",         :limit => 1
+    t.string   "width"
+    t.string   "height"
+    t.string   "width_big"
+    t.string   "height_big"
+    t.string   "width_middle"
+    t.string   "height_middle"
+    t.string   "width_small"
+    t.string   "height_small"
   end
 
   create_table "recommends", :force => true do |t|

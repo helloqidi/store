@@ -13,9 +13,9 @@
         </div>
         <div class="list-body">
           <div class="recommend-photo fl" style="text-align:center;">
-            <a href="http://www.123haitao.com/t/18630" target="_blank">
+            <a href="<%=url(:recommend,:show,:id=>recommend.id)%>" target="_blank">
               <% photo=recommend.photos.recommend_main.first %>
-              <%= image_tag(photo.file.url(:small),:width=>"180px") %>
+              <%= image_tag( photo.file.url(:small),:width=>"180px",:backup_src=>photo.file.url(:big),:recommend_id=>recommend.id ) %>
             </a>
             <br />
             <%= link_to "购物直达",recommend.store_url,:target=>"_blank",:class=>"btn btn-info mt-10"%>

@@ -10,7 +10,7 @@
 
     <p class="navbar-text pull-right">
     <% if login? %>
-      <%= current_user.name %>
+      <%= link_to current_user.name,url(:account,:edit_profile) %>
       <%= link_to "退出",url(:account,:logout),:method=>:delete,:class=>"navbar-link" %>
     <% else %>
       <%= link_to "登录",url(:account,:login),:class=>"navbar-link"%>
