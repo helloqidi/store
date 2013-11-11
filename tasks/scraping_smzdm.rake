@@ -71,7 +71,12 @@ namespace :scraping_smzdm do
                                   :user_name=>user_name,
                                   :category_id=>Settings[:category_other_id],
                                   :user_id=>Settings[:default_user_id])
-        recommend.save
+        #存储图片
+        if recommend.save
+          recommend.photos.create(:file=>::MiniMagick::Image::open(img_src_1),:sort=>Photo::SORT[:recommend_main])
+        end
+
+
       end#show_page_links
     rescue=>e
       logger.debug("Swaping error:#{e.message}")

@@ -35,9 +35,11 @@
 
 
   <div class="span3">
-    <div class="avatar-div">
-      <%= image_tag(@recommend.user.avatar.url(:big),:width=>100,:height=>100) %>
-    </div>
-    <h4>推荐人：<span class="orange"><%=@recommend.user.name%></span></h4>
+    <%if @recommend.user_id.present?%>
+      <div class="avatar-div">
+        <%= image_tag(@recommend.user.avatar.url(:big),:width=>100,:height=>100) %>
+      </div>
+      <h4>推荐人：<span class="orange"><%=@recommend.user.name%></span></h4>
+    <%end%>
   </div>
 </div>
