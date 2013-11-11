@@ -1,0 +1,32 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>标识</th>
+      <th>描述</th>
+      <th>发布</th>
+      <th>编辑</th>
+      <th>删除</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @free_blocks.each_with_index do |block,index| %>
+      <tr id="block-<%=block.id%>">
+        <td><%= block.tag %></td>
+        <td><%= block.content %></td>
+        <td class="block-operate">
+          <%if block.published?%>
+            无
+          <%else%>
+            <%= link_to "发布",url(:free_block,:set_publish,:id=>block.id),:method=>:put,:remote=>true,:class=>"red"%>
+          <%end%>
+        </td>
+        <td><%= link_to "编辑", url(:free_block,:edit,:id=>block.id)%></td>
+        <td><%= link_to "删除",url(:free_block,:delete,:id=>block.id),:method=>:delete,:remote=>true,:confirm=>"删除后将不能恢复，真要删除吗？" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= (will_paginate @free_blocks).to_s.html_safe %>
+<p>
+<%= link_to "创建",url(:free_block,:new) %>
+</p>

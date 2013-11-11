@@ -16,4 +16,15 @@ Store::App.controllers :photo do
 
   end
 
+  post :free_block_upload, :csrf_protection => false do
+    logger.debug(params)
+    photo=Photo.new(:file=>params[:upfile],:sort=>Photo::SORT[:free_block_desc])
+    if photo.save
+      return {:url=>photo.file.url(:big),:title=>params[:pictitle],:state=>"SUCCESS"}.to_json
+    else
+      return {:state=>"FAIL"}.to_json
+    end
+
+  end
+  
 end

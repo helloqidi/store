@@ -1,0 +1,66 @@
+<% content_for :stylesheets do %>
+  <link type="text/css" rel="stylesheet" href="<%=Settings[:domain]%>/ueditor/themes/default/css/ueditor.css">
+<% end %>
+
+<% content_for :javascripts do %>
+  <script type="text/javascript" src="<%=Settings[:domain]%>/ueditor/ueditor.config.js"></script>
+  <script type="text/javascript" src="<%=Settings[:domain]%>/ueditor/ueditor.all.js"></script>
+  <script type="text/javascript">
+    //更多其他参数，请参考ueditor.config.js中的配置项
+    var options={
+      //上传路径
+      imageUrl:"/photo/free_block_upload",
+      //上传后的图片修正路径
+      imagePath:"", 
+      //工具栏
+      toolbars:[['fullScreen','source','preview','bold','italic','fontsize','fontfamily','forecolor','justifyleft','justifycenter','justifyright','link','unlink','insertimage']],
+      //默认的编辑区域高度
+      initialFrameHeight:500,
+      //关闭elementPath
+      elementPathEnabled:false,
+      //是否开启远程图片抓取
+      catchRemoteImageEnable:false
+    }
+    UE.getEditor('free_block_content',options);
+  </script>
+<% end %>
+
+<% content_for :jquery do %>
+  store.validateNewFreeBlockForm();
+<% end %>
+
+<div>
+  <% form_for @free_block, url(:free_block, :update, :id=>@free_block.id), :method=>:put,:class=>"form-horizontal",:id=>"new-block-form",  :multipart => true do |f| %>
+    <div class="control-group">
+      <label class="control-label" for="free_block_tag">标识</label>
+      <div class="controls">
+        <%= f.text_field :tag, :class=>"input-xxlarge", :placeholder=>"标识" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="free_block_order">排序</label>
+      <div class="controls">
+        <%= f.text_field :order, :placeholder=>"排序" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="free_block_content">内容</label>
+      <div class="controls">
+        <%= f.text_area :content,:class=>"",:rows=>"20",:placeholder=>"内容" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label" for="free_block_memo">备注</label>
+      <div class="controls">
+        <%= f.text_field :memo, :class=>"input-large", :placeholder=>"备注" %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <div class="controls">
+        <%= f.submit "保存",:class=>"btn btn-large btn-primary" %>
+        <a class="btn btn-large" href="javascript:history.go(-1);" >取消</a>
+      </div>
+    </div>
+  <%end%>
+</div>

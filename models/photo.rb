@@ -17,7 +17,9 @@ class Photo < ActiveRecord::Base
     #推荐主图
     :recommend_main => 3,
     #推荐描述图
-    :recommend_desc => 4
+    :recommend_desc => 4,
+    #自由区块描述图
+    :free_block_desc => 5
   }
   #是否被引用
   QUOTE={

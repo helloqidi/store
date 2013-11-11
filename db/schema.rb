@@ -11,12 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 15) do
+ActiveRecord::Schema.define(:version => 16) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",                    :null => false
     t.integer  "parent_id",               :null => false
     t.integer  "level",      :limit => 3, :null => false
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  create_table "free_blocks", :force => true do |t|
+    t.string   "tag",                     :null => false
+    t.string   "content"
+    t.integer  "order",      :limit => 3, :null => false
+    t.integer  "status",     :limit => 3, :null => false
+    t.string   "memo"
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
   end

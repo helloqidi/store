@@ -429,3 +429,33 @@ store.adminSelect = function(){
         return false;
     });
 };
+
+
+/*
+ * 创建自由区块表单
+ * */
+store.validateNewFreeBlockForm=function(){
+  /* 表单验证 */
+  $("#new-block-form").validate({
+    rules:{
+      "free_block[tag]":{
+        required: true
+      },
+      "free_block[order]":{
+        digits:true
+      }
+    },
+    messages: {
+      "free_block[tag]":{
+        required: "标识不能为空"
+      },
+      "free_block[order]":{
+        digits: "输入整数"
+      }
+    },
+    errorClass: "help-inline store-text-error",
+    submitHandler: function(form) {
+        $(form).ajaxSubmit({});
+    }
+  });
+};

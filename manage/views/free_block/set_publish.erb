@@ -1,0 +1,11 @@
+<taconite>
+<% if @success %>
+  <replaceContent select="#block-<%=@free_block.id%> .block-operate">
+    无
+  </replaceContent>
+<%else%>
+  <eval>
+    store.showErrorInfo("<%=@note%>");
+  </eval>
+<%end%>
+</taconite>
