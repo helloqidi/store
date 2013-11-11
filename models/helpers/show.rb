@@ -57,5 +57,12 @@ module HelpersShow
       string.split(/[,，]*[,，]/).uniq
     end
 
+    #获取自由区块
+    def get_one_free_block(tag)
+      blocks = FreeBlock.published.where(:tag=>tag)
+      return nil if blocks.blank?
+      block = blocks.first
+    end
+
   end
 end

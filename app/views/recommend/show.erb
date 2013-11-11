@@ -41,5 +41,14 @@
       </div>
       <h4>推荐人：<span class="orange"><%=@recommend.user.name%></span></h4>
     <%end%>
-  </div>
+
+    <div class="block">
+      <% block = get_one_free_block("show_page_right_top")%>
+      <%if block.present?%>
+        <%=block.content.html_safe%>
+      <%else%>
+        <h3>欢迎访问</h3>
+      <%end%>
+    </div>
+
 </div>

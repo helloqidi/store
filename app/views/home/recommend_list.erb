@@ -70,6 +70,13 @@
 
 
   <div class="span3">
-    <h4>欢迎访问</h4>
+    <div class="block">
+      <% block = get_one_free_block("home_right_top")%>
+      <%if block.present?%>
+        <%=block.content.html_safe%>
+      <%else%>
+        <h3>欢迎访问</h3>
+      <%end%>
+    </div>
   </div>
 </div>
