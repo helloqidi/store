@@ -22,6 +22,8 @@ Store::Manage.controllers :recommend do
   post :create do
     logger.debug(params)
     params[:recommend][:user_id] = current_user.id
+    logger.debug("--------#{current_user.id}")
+    logger.debug(params)
 
     @recommend=Recommend.new(params[:recommend])
 

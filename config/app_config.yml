@@ -7,12 +7,18 @@ development: &default
   site_description: "做专业的导购网站"
   site_keywords: "导购"
   site_error_info: "服务器忙，请稍候重试！"
+  #其他类别,用于抓取数据时的类别存储
+  category_other_id: 1
+  #默认一个用户,用于抓取数据时的用户信息存储
+  default_user_id: 2
   
 production:
   <<: *default
   domain: "http://www.helloqidi.com"
   domain_css: "http://www.helloqidi.com/stylesheets"
   domain_js: "http://www.helloqidi.com/javascripts"
+  category_other_id: 1
+  default_user_id: 1
 
 test: 
   <<: *default

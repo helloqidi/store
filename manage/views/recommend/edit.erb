@@ -84,6 +84,24 @@
         <%= f.text_field :tags, :class=>"input-large", :placeholder=>"标签" %>
       </div>
     </div>
+    <div class="control-group" for="recommend_user_name">
+      <label class="control-label">推荐人</label>
+      <div class="controls">
+        <%= f.text_field :user_name, :class=>"input-large", :placeholder=>"推荐人" %>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">抓取网站</label>
+      <div class="controls">
+        <%= @recommend.swaping_site%>
+      </div>
+    </div>
+    <div class="control-group">
+      <label class="control-label">抓取网址</label>
+      <div class="controls">
+        <%= @recommend.swaping_url%>
+      </div>
+    </div>
 
     <div class="control-group">
       <div class="controls">
