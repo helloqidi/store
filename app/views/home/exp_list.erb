@@ -7,7 +7,6 @@
       margin-bottom:10px;
     }
     .sdListOne .sdPic {
-      width: 200px;
       padding-left: 10px;
       padding-top: 10px;
       padding-bottom: 10px;
@@ -18,7 +17,6 @@
     }
     .sdListRight {
       float: right;
-      width: 440px;
     }
     .clear{
       clear:both;
@@ -41,7 +39,7 @@
 
     <%@recommends.each do |recommend|%>
       <div class="sdListOne">
-        <div class="sdPic">
+        <div class="sdPic span2">
           <a href="<%=url(:recommend,:show,:id=>recommend.id)%>" target="_blank">
             <% photo=recommend.photos.recommend_main.first %>
             <% if photo.present?%>
@@ -51,7 +49,7 @@
           </a>
         </div>
 
-        <div class="sdListRight">
+        <div class="sdListRight span6">
           <h4 class="sdTitle">
             <%=link_to recommend.title,url(:recommend,:show,:id=>recommend.id),:target=>"_blank"%>
           </h4>
@@ -83,4 +81,5 @@
       <%end%>
     </div>
   </div>
+
 </div>
