@@ -11,8 +11,10 @@ development: &default
   category_other_id: 1
   #默认一个用户,用于抓取数据时的用户信息存储
   default_user_id: 2
-  qiniu_key: "QPqYEAMobxb9yJApcclkXjDm_dCVR6CcDFI6y0Pa"
-  qiniu_secret: "JhVi8FUeNYonv_TjaUU6pjbN3M880S3jNGrRZSlb"
+  qiniu_access_key: "QPqYEAMobxb9yJApcclkXjDm_dCVR6CcDFI6y0Pa"
+  qiniu_secret_key: "JhVi8FUeNYonv_TjaUU6pjbN3M880S3jNGrRZSlb"
+  qiniu_bucket: "testhelloqidi"
+  qiniu_bucket_domain: "testhelloqidi.u.qiniudn.com"
   
 production:
   <<: *default
@@ -21,6 +23,10 @@ production:
   domain_js: "http://static.helloqidi.com/javascripts"
   category_other_id: 97
   default_user_id: 1
+  qiniu_access_key: "QPqYEAMobxb9yJApcclkXjDm_dCVR6CcDFI6y0Pa"
+  qiniu_secret_key: "JhVi8FUeNYonv_TjaUU6pjbN3M880S3jNGrRZSlb"
+  qiniu_bucket: "helloqidi"
+  qiniu_bucket_domain: "helloqidi.u.qiniudn.com"
 
 test: 
   <<: *default

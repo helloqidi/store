@@ -25,17 +25,6 @@ end
 WillPaginate::ViewHelpers.pagination_options[:previous_label] = '« 上一页'
 WillPaginate::ViewHelpers.pagination_options[:next_label] = '下一页 »'
 
-#CarrierWave
-::CarrierWave.configure do |config|
-  config.storage             = :qiniu
-  config.qiniu_access_key    = "QPqYEAMobxb9yJApcclkXjDm_dCVR6CcDFI6y0Pa"
-  config.qiniu_secret_key    = "JhVi8FUeNYonv_TjaUU6pjbN3M880S3jNGrRZSlb"
-  config.qiniu_bucket        = "helloqidi"
-  config.qiniu_bucket_domain = "helloqidi.u.qiniudn.com"
-  config.qiniu_block_size    = 4*1024*1024
-  config.qiniu_protocal      = "http"
-end
-
 #
 # ## Configure your HTML5 data helpers
 #
@@ -67,6 +56,15 @@ end
 # Settings[:site_title]
 Settings = YAML.load_file(File.expand_path("#{PADRINO_ROOT}/config", __FILE__) + '/app_config.yml')[PADRINO_ENV].symbolize_keys
 
-
+#CarrierWave
+::CarrierWave.configure do |config|
+  config.storage             = :qiniu
+  config.qiniu_access_key    = Settings[:qiniu_access_key]
+  config.qiniu_secret_key    = Settings[:qiniu_secret_key]
+  config.qiniu_bucket        = Settings[:qiniu_bucket]
+  config.qiniu_bucket_domain = Settings[:qiniu_bucket_domain]
+  config.qiniu_block_size    = 4*1024*1024
+  config.qiniu_protocal      = "http"
+end
 
 Padrino.load!
