@@ -1,0 +1,11 @@
+<taconite>
+<% if @success %>
+  <replaceContent select="#recommend-<%=@recommend.id%> .recommend-operate-exp">
+    无
+  </replaceContent>
+<%else%>
+  <eval>
+    store.showErrorInfo("<%=@note%>");
+  </eval>
+<%end%>
+</taconite>

@@ -29,6 +29,13 @@
         <%=@recommend.description.html_safe%>
       </div>
 
+      <%if admin?%>
+        <div>
+          <h4>管理选项</h4>
+          <%=link_to "编辑",Store::Manage.url(:recommend,:edit,:id=>@recommend.id),:class=>"btn" %>
+        </div>
+      <%end%>
+
     </div>
 
   </div>

@@ -137,4 +137,18 @@ Store::Manage.controllers :recommend do
     render "recommend/publish"
   end
 
+  #设为经验
+  put :set_exp, :with => :id, :csrf_protection => false do
+    @recommend = Recommend.find_by_id(params[:id])
+    if @recommend.update_attribute(:sort, Recommend::SORT[:exp])
+      @success =  true
+    else
+      @success = false
+      @note = "服务器忙,请稍候重试"
+    end
+
+    content_type 'text/xml'
+    render "recommend/set_exp"
+  end
+
 end

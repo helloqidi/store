@@ -1,0 +1,86 @@
+<% content_for :jquery do %>
+<% end %>
+
+<% content_for :stylesheets do %>
+  <style>
+    .sdListOne{
+      margin-bottom:10px;
+    }
+    .sdListOne .sdPic {
+      width: 200px;
+      padding-left: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      float: left;
+      border:1px solid #D9D9D9;
+      border-radius:5px;
+      background-color:#fff;
+    }
+    .sdListRight {
+      float: right;
+      width: 440px;
+    }
+    .clear{
+      clear:both;
+    }
+
+    span.sdTime {
+      display: block;
+      float: right;
+      text-align: right;
+      width: 140px;
+      color: #999;
+      font-family: arial,"SimSun";
+    }
+  </style>
+<% end %>
+
+
+<div class="row">
+  <div class="span9">
+
+    <%@recommends.each do |recommend|%>
+      <div class="sdListOne">
+        <div class="sdPic">
+          <a href="<%=url(:recommend,:show,:id=>recommend.id)%>" target="_blank">
+            <% photo=recommend.photos.recommend_main.first %>
+            <% if photo.present?%>
+              <% photo_width= photo.width_big.present? ? "#{photo.width_big}px" : "780px" %>
+              <%= image_tag( photo.file.url(:small),:width=>"180px")%>
+            <%end%>
+          </a>
+        </div>
+
+        <div class="sdListRight">
+          <h4 class="sdTitle">
+            <%=link_to recommend.title,url(:recommend,:show,:id=>recommend.id),:target=>"_blank"%>
+          </h4>
+          <div class="sdRightTop">
+            <span class="orange"><%=recommend.user_name%></span>
+            <span class="sdTime">发表于：<%=format_time_with_day(recommend.created_at)%></span>
+            <div class="clear"></div>
+          </div>
+          <div class="sdInfo">
+            <%=truncate(recommend.desc_text, :length => 150)%>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+    <%end%>
+
+    <%= (will_paginate @recommends).to_s.html_safe %>
+
+
+
+  </div>
+  <div class="span3">
+    <div class="block">
+      <% block = get_one_free_block("exp_right_top")%>
+      <%if block.present?%>
+        <%=block.content.html_safe%>
+      <%else%>
+        <h3>欢迎访问</h3>
+      <%end%>
+    </div>
+  </div>
+</div>

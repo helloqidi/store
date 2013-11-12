@@ -27,6 +27,7 @@
       <th>类别</th>
       <th>创建时间</th>
       <th>发布</th>
+      <th>设为经验</th>
       <th>编辑</th>
       <th>删除</th>
     </tr>
@@ -44,6 +45,13 @@
             无
           <%else%>
             <%= link_to "发布",url(:recommend,:set_publish,:id=>recommend.id),:method=>:put,:remote=>true,:class=>"btn"%>
+          <%end%>
+        </td>
+        <td class="recommend-operate-exp">
+          <%if recommend.exp? == false && recommend.published?%>
+            <%= link_to "经验",url(:recommend,:set_exp,:id=>recommend.id),:method=>:put,:remote=>true,:class=>"btn"%>
+          <%else%>
+            无
           <%end%>
         </td>
         <td><%= link_to "编辑", url(:recommend,:edit,:id=>recommend.id)%></td>

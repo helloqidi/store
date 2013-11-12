@@ -28,7 +28,10 @@ class Recommend < ActiveRecord::Base
 
   #备用类型字段
   SORT={
-    :normal => 0
+    #普通
+    :normal => 0,
+    #经验分享
+    :exp => 1
   }
 
   ##验证
@@ -47,11 +50,17 @@ class Recommend < ActiveRecord::Base
   scope :draft, -> { where(status: STATUS[:draft]) }
   scope :published, -> { where(status: STATUS[:published]) }
   scope :recent, order('created_at DESC')
-
+  scope :exp, -> { where(sort: SORT[:exp]) }
 
   #是否已经发布了
   def published?
     return true if self.status == STATUS[:published]
+    false
+  end
+
+  #是否是经验了
+  def exp?
+    return true if self.sort == SORT[:exp]
     false
   end
 
