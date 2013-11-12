@@ -24,6 +24,7 @@ gem 'tire', '~> 0.6.0'
 gem 'will_paginate', '~> 3.0.4', :require => ['will_paginate/active_record', 'will_paginate/view_helpers/sinatra']
 #compress js/css
 gem 'yui-compressor', '~> 0.9.6'
+#抓取
 gem 'mechanize'
 
 ## Production requirements
