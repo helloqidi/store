@@ -46,6 +46,7 @@ class Recommend < ActiveRecord::Base
   ##过滤
   scope :draft, -> { where(status: STATUS[:draft]) }
   scope :published, -> { where(status: STATUS[:published]) }
+  scope :recent, order('created_at DESC')
 
 
   #是否已经发布了

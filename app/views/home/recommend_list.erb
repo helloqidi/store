@@ -20,7 +20,7 @@
         <li class="list-li" id="recommend-<%=recommend.id%>">
         <div class="list-header">
           <h4><%=link_to recommend.title,url(:recommend,:show,:id=>recommend.id),:target=>"_blank"%><span class="orange"><%=recommend.sub_title%></span></h4>
-          <p><span><%=format_time_with_hour(recommend.created_at)%></span>
+          <p><span><%=format_time_with_day(recommend.created_at)%></span>
             <%if recommend.user_name.present?%>
               <span class="fr"><span class="orange"><%=recommend.user_name%></span>推荐</span>
             <%end%>

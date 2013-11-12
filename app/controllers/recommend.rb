@@ -14,6 +14,10 @@ Store::App.controllers :recommend do
       redirect url(:home,:recommend)
     end
 
+    @title = @recommend.title
+    @keywords = @recommend.tags
+    @description = @recommend.desc_text
+
     @recommend_user = @recommend.user
       
     render "recommend/show"
