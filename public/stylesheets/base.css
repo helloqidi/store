@@ -90,3 +90,27 @@ body{
   clear:both;
 }
 /*will_paginate 翻页 end*/
+
+/*loading start*/
+.loading_box {
+    background-color: #FFFF00;
+    color: #444;
+    padding: 3px 0;
+    position: fixed;
+    top: 0px;
+    left: 50%;
+    width: 135px;
+    z-index: 999;
+    display:none;
+    opacity:.9;
+    filter:alpha(opacity=90);
+}
+.loading_box span{
+    display:block;
+    background:url(/images/loading.gif) left center no-repeat;
+    width:70px;
+    margin:0 auto;
+    font-size:14px;
+    padding-left:25px;
+}
+/*loading end*/

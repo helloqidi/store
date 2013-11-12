@@ -22,8 +22,17 @@ store.initial=function(){
   $('input, textarea').placeholder();
   store.versionIEWarn();
   store.listToggleLink();
+  store.loading();
 };
 
+/*loading进度*/
+store.loading = function(show){
+    $("#loading").ajaxStart(function(){
+        $(this).show();
+    }).ajaxStop(function(){
+        $(this).hide();
+    });
+};
 
 /*
  * 验证注册表单
