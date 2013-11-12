@@ -31,6 +31,15 @@ Store::App.controllers :home do
 
   #发现频道页面
   get :found do
+    logger.debug(params)
+    store_name = params[:store_name]
+  
+    if store_name.blank?
+      @recommends = Recommend.published.paginate(:page => params[:page], :per_page => 15)
+    else
+      @recommends = Recommend.published.where(:store_name=>store_name).paginate(:page => params[:page], :per_page => 15)
+    end
+
     render "home/found_list"
   end
 

@@ -1,10 +1,68 @@
 <% content_for :jquery do %>
+  var $container = $('#container-masonry');
+  $container.masonry({
+  itemSelector: '.item'
+  });
+<% end %>
+
+<% content_for :stylesheets do %>
+  <style>
+    .item {
+      width: 180px;
+      margin-right:45px;
+      margin-bottom: 20px;
+      border:1px solid #D9D9D9;
+      border-radius:5px;
+      background-color:#fff;
+      padding:2px;
+    }
+    .item a{text-decoration:none;}
+  </style>
 <% end %>
 
 <div class="row">
-  <div class="span9">
-    <h3>即将上线,敬请期待</h3>
-  </div>
-  <div class="span3">
+  <div class="span12">
+
+
+    <div class="mallClass">
+      <% mall_array = ["亚马逊中国","苏宁易购"] %>
+      <% if mall_array.present? %>
+        <ul class="inline">
+          <span>商家：</span>
+          <%mall_array.each do |mall|%>
+            <%class_name= mall==params[:store_name] ? 'btn-primary btn' : "btn"%>
+            <li><%=link_to mall,url(:home,:found,:store_name=>mall),:class=>class_name%></li>
+          <%end%>
+        </ul>
+      <% end %>
+    </div>
+
+
+    <div id="container-masonry">
+      <%@recommends.each_with_index do |recommend,index|%>
+        <div class="item">
+          <a href="<%=url(:recommend,:show,:id=>recommend.id)%>" target="_blank">
+            <% photo=recommend.photos.recommend_main.first %>
+            <% if photo.present?%>
+              <%= image_tag( photo.file.url(:small) )%>
+            <%end%>
+          </a>
+          <p>
+          <%=link_to recommend.title,url(:recommend,:show,:id=>recommend.id),:target=>"_blank"%><span class="orange"><%=recommend.sub_title%></span>
+          </p>
+          <p>
+          <strong><%=recommend.user_name%>:</strong><%=truncate(recommend.desc_text, :length => 50)%>
+          </p>
+          <p style="padding-left:120px;">
+          <%=link_to "直达链接",recommend.store_url,:target=>"_blank"%>
+          </p>
+        </div>
+      <%end%>
+    </div>
+
+    <%= (will_paginate @recommends).to_s.html_safe %>
+
+
+
   </div>
 </div>
