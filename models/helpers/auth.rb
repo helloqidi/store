@@ -62,5 +62,12 @@ module HelpersAuth
       return false      
     end
 
+    #存储多说token
+    def set_duoshuo_token(user)
+      token = {"short_name"=>Settings[:duoshuo_short_name], "user_key"=>"#{user.id}", "name"=>user.name}
+      duoshuo_token = JWT.encode(token, Settings[:duoshuo_secret])
+      response.set_cookie('duoshuo_token', {:value => duoshuo_token, :path => "/", :expires => 2.weeks.since, :httponly => true}) 
+    end
+
   end
 end

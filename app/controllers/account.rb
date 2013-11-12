@@ -16,6 +16,8 @@ Store::App.controllers :account do
     logger.debug(request.xhr?)
     @user=User.new(params[:user])
     if @user.save
+      session[:user_id] = @user.id
+      set_duoshuo_token(@user)
       @success=true
     else
       @success=false
@@ -36,6 +38,7 @@ Store::App.controllers :account do
     @user=User.authenticate(params[:email],params[:password])
     if @user
       session[:user_id] = @user.id
+      set_duoshuo_token(@user)
       #如果选择记住,则保留2个星期cookie信息,cookie的key为'user'
       response.set_cookie('user', {:value => @user.encrypt_cookie_value, :path => "/", :expires => 2.weeks.since, :httponly => true}) if params[:remember_me]
       @success=true

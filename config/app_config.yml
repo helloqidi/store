@@ -15,6 +15,8 @@ development: &default
   qiniu_secret_key: "JhVi8FUeNYonv_TjaUU6pjbN3M880S3jNGrRZSlb"
   qiniu_bucket: "testhelloqidi"
   qiniu_bucket_domain: "testhelloqidi.u.qiniudn.com"
+  duoshuo_short_name: "helloqidi"
+  duoshuo_secret: "ff8d04c295dc21e44232d51fda900878"
   
 production:
   <<: *default

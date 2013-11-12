@@ -29,6 +29,8 @@ gem 'mechanize'
 #七牛
 #gem 'qiniu-rs'
 gem 'carrierwave-qiniu'
+#JWT(可用于多说评论框)
+gem 'jwt'
 
 ## Production requirements
 group :production do
