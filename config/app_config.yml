@@ -15,8 +15,8 @@ development: &default
 production:
   <<: *default
   domain: "http://www.helloqidi.com"
-  domain_css: "http://www.helloqidi.com/stylesheets"
-  domain_js: "http://www.helloqidi.com/javascripts"
+  domain_css: "http://static.helloqidi.com/stylesheets"
+  domain_js: "http://static.helloqidi.com/javascripts"
   category_other_id: 97
   default_user_id: 1
 
