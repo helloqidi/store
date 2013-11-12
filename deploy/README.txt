@@ -2,7 +2,7 @@
 ============================================
 git fetch
 git merge origin/master
-bundle install  (如果发生错误,按照提示单独进行gem install xxx即可)
+bundle install  (如果发生错误,按照提示单独进行gem install xxx即可;可能需要先停掉服务 ./rainbows.sh stop)
 padrino rake ar:migrate -e production
 ./rainbows.sh restart
 
