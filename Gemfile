@@ -26,6 +26,9 @@ gem 'will_paginate', '~> 3.0.4', :require => ['will_paginate/active_record', 'wi
 gem 'yui-compressor', '~> 0.9.6'
 #抓取
 gem 'mechanize'
+#七牛
+#gem 'qiniu-rs'
+gem 'carrierwave-qiniu'
 
 ## Production requirements
 group :production do

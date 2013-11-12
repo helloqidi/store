@@ -11,6 +11,8 @@ development: &default
   category_other_id: 1
   #默认一个用户,用于抓取数据时的用户信息存储
   default_user_id: 2
+  qiniu_key: "QPqYEAMobxb9yJApcclkXjDm_dCVR6CcDFI6y0Pa"
+  qiniu_secret: "JhVi8FUeNYonv_TjaUU6pjbN3M880S3jNGrRZSlb"
   
 production:
   <<: *default

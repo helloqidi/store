@@ -3,7 +3,8 @@ class PhotoUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   #存储在文件中
-  storage :file
+  #storage :file
+  storage :qiniu
 
   process :store_geometry_original
 

@@ -3,7 +3,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   #存储在文件中
-  storage :file
+  #storage :file
+  storage :qiniu
   
   #process :resize_to_fit => [80, 80]
   #process :convert => 'png' 

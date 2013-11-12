@@ -1,7 +1,9 @@
 # encoding: utf-8
 class Photo < ActiveRecord::Base
-  #商品图片
+  #主图片
   mount_uploader :file, PhotoUploader
+  #描述图片
+  mount_uploader :desc_file, PhotoDescUploader
 
 
   ##关系
@@ -29,7 +31,7 @@ class Photo < ActiveRecord::Base
 
   ##验证
   #validates :related_id, :presence=>true
-  validates :file, :presence=>true
+  #validates :file, :presence=>true
   validates :sort, :presence=>true
   
   ##过滤

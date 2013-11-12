@@ -7,9 +7,9 @@ Store::App.controllers :photo do
   #
   post :recommend_upload, :csrf_protection => false do
     logger.debug(params)
-    photo=Photo.new(:file=>params[:upfile],:sort=>Photo::SORT[:recommend_desc])
+    photo=Photo.new(:desc_file=>params[:upfile],:sort=>Photo::SORT[:recommend_desc])
     if photo.save
-      return {:url=>photo.file.url(:big),:title=>params[:pictitle],:state=>"SUCCESS"}.to_json
+      return {:url=>photo.desc_file.url,:title=>params[:pictitle],:state=>"SUCCESS"}.to_json
     else
       return {:state=>"FAIL"}.to_json
     end
@@ -18,9 +18,9 @@ Store::App.controllers :photo do
 
   post :free_block_upload, :csrf_protection => false do
     logger.debug(params)
-    photo=Photo.new(:file=>params[:upfile],:sort=>Photo::SORT[:free_block_desc])
+    photo=Photo.new(:desc_file=>params[:upfile],:sort=>Photo::SORT[:free_block_desc])
     if photo.save
-      return {:url=>photo.file.url(:big),:title=>params[:pictitle],:state=>"SUCCESS"}.to_json
+      return {:url=>photo.desc_file.url,:title=>params[:pictitle],:state=>"SUCCESS"}.to_json
     else
       return {:state=>"FAIL"}.to_json
     end
