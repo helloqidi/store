@@ -1,31 +1,32 @@
-<div class="navbar">
-  <div class="navbar-inner">
-    <%= link_to "精品导购",Settings[:domain],:class=>"brand"%>
+<div class="masthead">
+  <h3 class="muted">精品导购</h3>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+        <ul class="nav">
+          <li class="<%=css_active?(@css_recommend)%>"><%= link_to "推荐专区",url(:home,:recommend)%></li>
+          <li class="<%=css_active?(@css_exp)%>"><%= link_to "经验广场",url(:home,:exp)%></li>
+          <li class="<%=css_active?(@css_found)%>"><%= link_to "发现频道",url(:home,:found)%></li>
+        </ul>
+        <p class="navbar-text pull-right">
+        <% if login? %>
+          <%= link_to current_user.name,url(:account,:edit_profile) %>
+          <%= link_to "退出",url(:account,:logout),:method=>:delete,:class=>"navbar-link" %>
+        <% else %>
+          <%= link_to "登录",url(:account,:login),:class=>"navbar-link"%>
+          <%= link_to "注册",url(:account,:register),:class=>"navbar-link"%>
+        <% end %>
+        </p>
 
-    <ul class="nav">
-      <li class="<%=css_active?(@css_recommend)%>"><%= link_to "推荐专区",url(:home,:recommend)%></li>
-      <li class="<%=css_active?(@css_exp)%>"><%= link_to "经验广场",url(:home,:exp)%></li>
-      <li class="<%=css_active?(@css_found)%>"><%= link_to "发现频道",url(:home,:found)%></li>
-    </ul>
-
-    <p class="navbar-text pull-right">
-    <% if login? %>
-      <%= link_to current_user.name,url(:account,:edit_profile) %>
-      <%= link_to "退出",url(:account,:logout),:method=>:delete,:class=>"navbar-link" %>
-    <% else %>
-      <%= link_to "登录",url(:account,:login),:class=>"navbar-link"%>
-      <%= link_to "注册",url(:account,:register),:class=>"navbar-link"%>
-    <% end %>
-    </p>
-
-    <% form_tag url(:search,:content), :method => 'get', :class=>"navbar-form form-search" do %>
-      <div class="input-append">
-        <%= text_field_tag :q,:class=>"span2 search-query",:placeholder=>"搜索商品"%>
-        <button type="submit" class="btn"><i class="icon-search"></i></button>
+        <% form_tag url(:search,:content), :method => 'get', :class=>"navbar-form form-search" do %>
+          <div class="input-append">
+            <%= text_field_tag :q,:class=>"span2 search-query",:placeholder=>"搜索商品"%>
+            <button type="submit" class="btn"><i class="icon-search"></i></button>
+          </div>
+        <% end %>
       </div>
-    <% end %>
-
-  </div>
+    </div>
+  </div><!-- /.navbar -->
 </div>
 
 <div class="loading_box" id="loading">
