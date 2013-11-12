@@ -2,7 +2,7 @@
 Store::App.controllers :recommend do
 
   before do
-    @css_recommend = true
+    #@css_recommend = true
   end
 
 
