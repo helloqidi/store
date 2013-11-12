@@ -4,7 +4,7 @@
 
 
 <div class="top_tools clearfix">
-  <a href="<%=url(:recommend,:publish)%>" class="select_post">发布</a>
+  <a href="<%=url(:recommend,:publish)%>" class="select_post btn">发布</a>
 </div>
 
 <div class="sub_operation">
@@ -22,9 +22,10 @@
   <thead>
     <tr>
       <th></th>
-      <th>id</th>
       <th>标题</th>
       <th>来源</th>
+      <th>类别</th>
+      <th>创建时间</th>
       <th>发布</th>
       <th>编辑</th>
       <th>删除</th>
@@ -34,14 +35,15 @@
     <% @recommends.each_with_index do |recommend,index| %>
       <tr id="recommend-<%=recommend.id%>">
         <td><%= check_box_tag "recommend[ids][]",:value=>recommend.id %></td>
-        <td><%= recommend.id %></td>
         <td><%= link_to recommend.title,Store::App.url(:recommend,:show,:id=>recommend.id),:target=>"_blank" %></td>
         <td><%= recommend.store_name%></td>
+        <td><%= recommend.category.name%></td>
+        <td><%= format_time(recommend.created_at)%></td>
         <td class="recommend-operate">
           <%if recommend.published?%>
             无
           <%else%>
-            <%= link_to "发布",url(:recommend,:set_publish,:id=>recommend.id),:method=>:put,:remote=>true,:class=>"red"%>
+            <%= link_to "发布",url(:recommend,:set_publish,:id=>recommend.id),:method=>:put,:remote=>true,:class=>"btn"%>
           <%end%>
         </td>
         <td><%= link_to "编辑", url(:recommend,:edit,:id=>recommend.id)%></td>
