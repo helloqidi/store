@@ -349,6 +349,7 @@ store.listToggleLink=function(){
     //图片
     $recommendPhoto = $recommendDesc.prev('.recommend-photo');
     $recommendPhoto.removeClass("fl");
+    $recommendPhoto.css("max-height","1000px");
     $recommendImg = $recommendPhoto.find("img").first();
     var originalSrc = $recommendImg.attr("src");
     $recommendImg.attr("src",$recommendImg.attr("backup_src"));
@@ -369,6 +370,7 @@ store.listToggleLink=function(){
     //图片
     $recommendPhoto = $recommendDesc.prev('.recommend-photo');
     $recommendPhoto.addClass("fl");
+    $recommendPhoto.css("max-height","220px");
     var originalSrc = $recommendImg.attr("src");
     $recommendImg.attr("src",$recommendImg.attr("backup_src"));
     $recommendImg.attr("backup_src",originalSrc);
