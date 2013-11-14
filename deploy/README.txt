@@ -17,3 +17,16 @@ Tire.index('items'){delete}
 Tire.index("items").import(Item.all)
 
 2,
+
+
+
+重启服务器后
+============================================
+1,启动nginx
+sudo /opt/nginx/sbin/nginx
+
+2,启动elasticsearch
+sudo bin/elasticsearch
+
+3,启动项目
+./rainbows.sh start
