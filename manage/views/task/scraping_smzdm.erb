@@ -1,0 +1,14 @@
+<taconite>
+<% if @success %>
+  <replaceContent select="#scraping_smzdm_operate">
+    正在抓取
+  </replaceContent>
+  <eval>
+    store.showSuccessInfo("<%=@note%>");
+  </eval>
+<%else%>
+  <eval>
+    store.showErrorInfo("<%=@note%>");
+  </eval>
+<%end%>
+</taconite>

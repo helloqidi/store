@@ -1,0 +1,19 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>任务名称</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>抓取“什么值得买”数据</td>
+      <td id="scraping_smzdm_operate">
+        <%= link_to "抓取",url(:task,:scraping_smzdm),:remote=>true,:class=>"btn" %>
+        <%= link_to "查看结果",url(:recommend,:list),:class=>"btn" %>
+      </td>
+    </tr>
+  </tbody>
+</table>

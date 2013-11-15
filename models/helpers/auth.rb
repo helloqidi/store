@@ -41,6 +41,11 @@ module HelpersAuth
       deny_access_admin unless admin?
     end
   
+    ## 超级管理员以上权限
+    def authenticate_system
+      deny_access_admin unless system?
+    end
+
     #禁止访问
     def deny_access_admin
       flash[:notice] = "访问路径不存在!"
