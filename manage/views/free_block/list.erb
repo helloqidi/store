@@ -12,7 +12,7 @@
     <% @free_blocks.each_with_index do |block,index| %>
       <tr id="block-<%=block.id%>">
         <td><%= block.tag %></td>
-        <td><%= block.content %></td>
+        <td><%= truncate(block.content, :length => 50) %></td>
         <td class="block-operate">
           <%if block.published?%>
             无
