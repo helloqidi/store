@@ -16,7 +16,7 @@ Store::Manage.controllers :task do
     Jobs::Scraping::Smzdm.perform
 
     @success =  true
-    @note = "正在抓取..."
+    @note = "抓取成功"
     content_type 'text/xml'
     render "task/scraping_smzdm"
   end
