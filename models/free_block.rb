@@ -12,7 +12,6 @@ class FreeBlock < ActiveRecord::Base
 
   ##验证
   validates :tag, :presence=>true
-  validates :content, :presence=>true
   validates :status, :presence=>true
   validates :order, :presence=>true
 

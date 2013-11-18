@@ -44,6 +44,12 @@
       </div>
     </div>
     <div class="control-group">
+      <label class="control-label" for="free_block_content_text">简单内容</label>
+      <div class="controls">
+        <%= f.text_area :content_text,:class=>"span9",:rows=>"20",:placeholder=>"简单内容" %>
+      </div>
+    </div>
+    <div class="control-group">
       <label class="control-label" for="free_block_content">内容</label>
       <div class="controls">
         <%= f.text_area :content,:class=>"",:rows=>"20",:placeholder=>"内容" %>

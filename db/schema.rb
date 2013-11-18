@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 18) do
+ActiveRecord::Schema.define(:version => 19) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",                    :null => false
@@ -22,13 +22,14 @@ ActiveRecord::Schema.define(:version => 18) do
   end
 
   create_table "free_blocks", :force => true do |t|
-    t.string   "tag",                     :null => false
+    t.string   "tag",                       :null => false
     t.string   "content"
-    t.integer  "order",      :limit => 3, :null => false
-    t.integer  "status",     :limit => 3, :null => false
+    t.integer  "order",        :limit => 3, :null => false
+    t.integer  "status",       :limit => 3, :null => false
     t.string   "memo"
-    t.datetime "created_at",              :null => false
-    t.datetime "updated_at",              :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.string   "content_text"
   end
 
   create_table "items", :force => true do |t|

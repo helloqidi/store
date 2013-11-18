@@ -75,7 +75,7 @@
     <div class="block">
       <% block = get_one_free_block("exp_right_top")%>
       <%if block.present?%>
-        <%=block.content.html_safe%>
+        <%=block.content_text.present? ? block.content_text.html_safe : block.content.html_safe%>
       <%else%>
         <h3>欢迎访问</h3>
       <%end%>
