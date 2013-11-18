@@ -5,7 +5,8 @@
   <style>
     .list-header a{text-decoration:none;}
     .list-li{border-bottom:1px solid #E6E6E6;}
-    .recommend-photo{text-align:center;max-height:220px;overflow:hidden;}
+    .recommend-photo{text-align:center;}
+    .recommend-photo-inner{max-height:180px;overflow:hidden;}
     .recommend-desc{overflow:hidden;height:220px;}
     .list-show-link,.list-hide-link{display:block;text-align:right;}
   </style>
@@ -21,22 +22,25 @@
         <div class="list-header">
           <h4><%=link_to recommend.title,url(:recommend,:show,:id=>recommend.id),:target=>"_blank"%><span class="orange"><%=recommend.sub_title%></span></h4>
           <p><span><%=format_time_with_day(recommend.created_at)%></span>
-            <%if recommend.user_name.present?%>
-              <span class="fr"><span class="orange"><%=recommend.user_name%></span>推荐</span>
-            <%end%>
+          <%if recommend.user_name.present?%>
+            <span class="fr"><span class="orange"><%=recommend.user_name%></span>推荐</span>
+          <%end%>
           </p>
         </div>
         <div class="list-body">
           <div class="recommend-photo fl">
-            <a href="<%=url(:recommend,:show,:id=>recommend.id)%>" target="_blank">
-              <% photo=recommend.photos.recommend_main.first %>
-              <% if photo.present?%>
-                <% photo_width= photo.width_big.present? ? "#{photo.width_big}px" : "780px" %>
-                <%= image_tag( photo.file.url(:small),:width=>"180px",:backup_src=>photo.file.url(:big),:backup_width=>photo_width,:recommend_id=>recommend.id) %>
-              <%end%>
-            </a>
-            <br />
-            <%= link_to "购物直达",recommend.store_url,:target=>"_blank",:class=>"btn btn-info mt-10"%>
+            <div class="recommend-photo-inner">
+              <a href="<%=url(:recommend,:show,:id=>recommend.id)%>" target="_blank">
+                <% photo=recommend.photos.recommend_main.first %>
+                <% if photo.present?%>
+                  <% photo_width= photo.width_big.present? ? "#{photo.width_big}px" : "780px" %>
+                  <%= image_tag( photo.file.url(:small),:width=>"180px",:backup_src=>photo.file.url(:big),:backup_width=>photo_width,:recommend_id=>recommend.id) %>
+                <%end%>
+              </a>
+            </div>
+            <div>
+              <%= link_to "购物直达",recommend.store_url,:target=>"_blank",:class=>"btn btn-info mt-10"%>
+            </div>
           </div>
 
           <div class="recommend-desc">

@@ -343,13 +343,14 @@ store.listToggleLink=function(){
     //文字
     $(this).text("收起");
     $recommendDesc = $(this).parent().prev("div.recommend-desc");
-    $recommendDesc.css("height","100%").css("min-height","220px");
+    $recommendDesc.css("height","100%");
     $(this).toggleClass("list-show-link");
     $(this).toggleClass("list-hide-link");
     //图片
     $recommendPhoto = $recommendDesc.prev('.recommend-photo');
     $recommendPhoto.removeClass("fl");
-    $recommendPhoto.css("max-height","1000px");
+    //$recommendPhoto.css("max-height","1000px");
+    $recommendPhoto.find(".recommend-photo-inner").first().css("max-height","1000px");
     $recommendImg = $recommendPhoto.find("img").first();
     var originalSrc = $recommendImg.attr("src");
     $recommendImg.attr("src",$recommendImg.attr("backup_src"));
@@ -370,7 +371,8 @@ store.listToggleLink=function(){
     //图片
     $recommendPhoto = $recommendDesc.prev('.recommend-photo');
     $recommendPhoto.addClass("fl");
-    $recommendPhoto.css("max-height","220px");
+    //$recommendPhoto.css("max-height","220px");
+    $recommendPhoto.find(".recommend-photo-inner").first().css("max-height","180px");
     var originalSrc = $recommendImg.attr("src");
     $recommendImg.attr("src",$recommendImg.attr("backup_src"));
     $recommendImg.attr("backup_src",originalSrc);
