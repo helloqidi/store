@@ -37,9 +37,9 @@ Store::App.controllers :home do
     store_name = params[:store_name]
   
     if store_name.blank?
-      @recommends = Recommend.published.recent.paginate(:page => params[:page], :per_page => 15)
+      @recommends = Recommend.published.recent.paginate(:page => params[:page], :per_page => 20)
     else
-      @recommends = Recommend.published.recent.where(:store_name=>store_name).paginate(:page => params[:page], :per_page => 15)
+      @recommends = Recommend.published.recent.where(:store_name=>store_name).paginate(:page => params[:page], :per_page => 20)
     end
 
     render "home/found_list"
