@@ -11,7 +11,7 @@ Store::Manage.controllers :task do
     render "task/list"
   end
 
-  #抓取数据
+  #抓取smzdm数据
   get :scraping_smzdm do
     Jobs::Scraping::Smzdm.perform
 
@@ -19,6 +19,16 @@ Store::Manage.controllers :task do
     @note = "抓取成功"
     content_type 'text/xml'
     render "task/scraping_smzdm"
+  end
+
+  #抓取huihui数据
+  get :scraping_huihui do
+    Jobs::Scraping::Huihui.perform
+
+    @success =  true
+    @note = "抓取成功"
+    content_type 'text/xml'
+    render "task/scraping_huihui"
   end
 
 end

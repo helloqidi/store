@@ -8,7 +8,20 @@ Store::Manage.controllers :recommend do
 
   #列表
   get :list, :map => "/" do
-    @recommends = Recommend.paginate(:page => params[:page], :per_page => 15)
+    type = params[:type]
+    if type.blank?
+      @recommends = Recommend.recent.paginate(:page => params[:page], :per_page => 15)
+      @css_recommend_all = true
+    elsif type == "published"
+      @recommends = Recommend.published.recent.paginate(:page => params[:page], :per_page => 15)
+      @css_recommend_published = true
+    elsif type == "draft"
+      @recommends = Recommend.draft.recent.paginate(:page => params[:page], :per_page => 15)
+      @css_recommend_draft = true
+    elsif type == "exp"
+      @recommends = Recommend.exp.recent.paginate(:page => params[:page], :per_page => 15)
+      @css_recommend_exp = true
+    end
     render "recommend/list"
   end
 

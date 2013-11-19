@@ -1,0 +1,14 @@
+<taconite>
+<% if @success %>
+  <replaceContent select="#scraping_huihui_operate">
+    <%=@note%>
+  </replaceContent>
+  <eval>
+    store.showSuccessInfo("<%=@note%>");
+  </eval>
+<%else%>
+  <eval>
+    store.showErrorInfo("<%=@note%>");
+  </eval>
+<%end%>
+</taconite>

@@ -2,9 +2,13 @@
   store.adminSelect();
 <% end %>
 
-
-<div class="top_tools clearfix">
-  <a href="<%=url(:recommend,:publish)%>" class="select_post btn">发布</a>
+<div class="btn-toolbar">
+  <div class="btn-group">
+    <a class="btn <%=css_active?(@css_recommend_all)%>" href="<%=url(:recommend,:list)%>">全部</a>
+    <a class="btn <%=css_active?(@css_recommend_published)%>" href="<%=url(:recommend,:list,:type=>"published")%>">已发布</a>
+    <a class="btn <%=css_active?(@css_recommend_draft)%>" href="<%=url(:recommend,:list,:type=>"draft")%>">未发布</a>
+    <a class="btn <%=css_active?(@css_recommend_exp)%>" href="<%=url(:recommend,:list,:type=>"exp")%>">经验</a>
+  </div>
 </div>
 
 <div class="sub_operation">
@@ -15,6 +19,9 @@
     <a href="#" id="select_un">反选 </a>
     ｜
     <a href="#" id="select_cancel">取消 </a>
+
+    <a href="<%=url(:recommend,:publish)%>" class="select_post btn btn-primary ml-10">发布</a>
+
   </div>
 </div>
 
@@ -44,12 +51,12 @@
           <%if recommend.published?%>
             无
           <%else%>
-            <%= link_to "发布",url(:recommend,:set_publish,:id=>recommend.id),:method=>:put,:remote=>true,:class=>"btn"%>
+            <%= link_to "发布",url(:recommend,:set_publish,:id=>recommend.id),:method=>:put,:remote=>true,:class=>"btn btn-primary"%>
           <%end%>
         </td>
         <td class="recommend-operate-exp">
           <%if recommend.exp? == false && recommend.published?%>
-            <%= link_to "经验",url(:recommend,:set_exp,:id=>recommend.id),:method=>:put,:remote=>true,:class=>"btn"%>
+            <%= link_to "经验",url(:recommend,:set_exp,:id=>recommend.id),:method=>:put,:remote=>true,:class=>"btn btn-primary"%>
           <%else%>
             无
           <%end%>
