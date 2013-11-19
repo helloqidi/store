@@ -3,9 +3,9 @@ development: &default
   domain_css: "http://127.0.0.1:3000/stylesheets"
   domain_js: "http://127.0.0.1:3000/javascripts"
   session_secret: "1234567890abcdefghigklmnsdfewiruewpo-12i0.dsas90dojidco2"
-  site_title: "精品导购"
-  site_description: "做专业的导购网站"
-  site_keywords: "导购"
+  site_title: "精品导购 - 专业的导购网站,最好的网购产品推荐"
+  site_description: "精品导购是一个中立的为广大网友提供高性价比网购产品的推荐网站.我们每天推荐最新最全最优性价比的网购优惠信息,海淘特价信息。如果您发现了好的优惠打折信息，也可通过我们与更多网友分享。"
+  site_keywords: "导购 比价 网购 产品推荐"
   site_error_info: "服务器忙，请稍候重试！"
   #其他类别,用于抓取数据时的类别存储
   category_other_id: 1
