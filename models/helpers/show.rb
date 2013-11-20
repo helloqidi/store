@@ -54,6 +54,7 @@ module HelpersShow
 
     #拆分标签
     def tag_array_from_string(string)
+      return string if string.blank?
       string.split(/[,，]*[,，]/).uniq
     end
 
