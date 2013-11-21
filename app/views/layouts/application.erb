@@ -12,66 +12,6 @@
 
     <%= partial "meta_css",commonviews%>
 
-    <style>
-      body{
-        padding-top: 0px;
-        color: #88818D;
-        line-height: 1.4em;
-        font-weight: 300;
-      }
-      a:hover, a:focus, a:active {
-        text-decoration: none;
-      }
-      .navbar.navbar-inverse{
-        -webkit-box-shadow:0 1px 3px rgba(0,0,0,.2),0 0 4px rgba(0,0,0,.05);
-      }
-      .navbar .brand{
-        padding-top: 0px;
-      }
-      .navbar-inverse .brand, .navbar-inverse .nav > li > a {
-        text-shadow: 0 1px 0 white;
-      }
-      .navbar .container {
-        max-width: 940px;
-      }
-      .navbar a{
-        color: #88818D;
-      }
-      .navbar ul.nav > li > a {
-        padding-top: 20px;
-        padding-bottom: 20px;
-        font-size: 17px;
-        font-family: futura-pt,Avenir,Futura,"Helvetica Neue",Helvetica,Arial,sans-serif;
-        font-weight: 700;
-      }
-      .navbar ul.nav > li > a:hover, .navbar ul.nav > li > a:focus, .navbar ul.nav > li.active > a, .navbar ul.nav > li.active > a:hover, .navbar ul.nav > li.active > a:focus, .navbar .navbar-text a:hover {
-        border-bottom: 2px solid #490058;
-        background-color: transparent;
-        box-shadow: none;
-        padding-bottom: 2px;
-      }
-      .navbar .navbar-form .input-append{
-        padding-top: 10px;
-      }
-      .navbar .navbar-text{
-        padding-top: 10px;
-      }
-      
-
-      a.light-start{
-        color: #88818D !important;
-      }
-      a.light-start:hover, a.light-start:focus, .active a.light-start, .active a.light-start:hover, .active a.light-start:focus {
-        color: #490058 !important;
-      }
-      a.dark-start{
-        color: #490058 !important;
-      }
-      a.dark-start:hover, a.dark-start:focus, .active a.dark-start, .active a.dark-start:hover, .active a.dark-start:focus {
-        color: #88818D !important;
-      }
-    </style>
-
     <%= yield_content :stylesheets %>
 
   </head>
