@@ -1,5 +1,6 @@
 development: &default
   domain: "http://127.0.0.1:3000"
+  domain_img: "http://127.0.0.1:3000/images"
   domain_css: "http://127.0.0.1:3000/stylesheets"
   domain_js: "http://127.0.0.1:3000/javascripts"
   session_secret: "1234567890abcdefghigklmnsdfewiruewpo-12i0.dsas90dojidco2"

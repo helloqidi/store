@@ -1,23 +1,30 @@
-<div class="masthead">
-  <h3 class="muted">精品导购</h3>
-  <div class="navbar">
-    <div class="navbar-inner">
-      <div class="container">
+<div class="navbar navbar-inverse">
+  <div class="navbar-inner-helloqidi">
+    <div class="container">
+
+      <a class="brand" href="http://www.baidu.com" title="精品导购">
+        <img alt="精品导购" width="140" height="60" src="<%=Settings[:domain_img]%>/logo.jpg" />
+      </a>
+
+      <div class="nav-collapse collapse">
         <ul class="nav">
-          <li class="<%=css_active?(@css_recommend)%>"><%= link_to "推荐专区",url(:home,:recommend)%></li>
-          <li class="<%=css_active?(@css_exp)%>"><%= link_to "经验广场",url(:home,:exp)%></li>
-          <li class="<%=css_active?(@css_found)%>"><%= link_to "发现频道",url(:home,:found)%></li>
+          <li class="<%=css_active?(@css_recommend)%>"><%= link_to "推荐专区",url(:home,:recommend),:class=>"light-start"%></li>
+          <li class="<%=css_active?(@css_exp)%>"><%= link_to "经验广场",url(:home,:exp),:class=>"light-start"%></li>
+          <li class="<%=css_active?(@css_found)%>"><%= link_to "发现频道",url(:home,:found),:class=>"light-start"%></li>
+
         </ul>
+
+
         <p class="navbar-text pull-right">
         <% if login? %>
           <%= link_to current_user.name,url(:account,:edit_profile) %>
           <% if admin? %>
-            <%= link_to "管理后台",Store::Manage.url(:recommend,:list),:class=>"navbar-link" %>
+            <%= link_to "管理后台",Store::Manage.url(:recommend,:list),:class=>"navbar-link",:class=>"ight-start" %>
           <% end %>
-          <%= link_to "退出",url(:account,:logout),:method=>:delete,:class=>"navbar-link" %>
+          <%= link_to "退出",url(:account,:logout),:method=>:delete,:class=>"navbar-link",:class=>"ight-start" %>
         <% else %>
-          <%= link_to "登录",url(:account,:login),:class=>"navbar-link"%>
-          <%= link_to "注册",url(:account,:register),:class=>"navbar-link"%>
+          <%= link_to "登录",url(:account,:login),:class=>"navbar-link",:class=>"ight-start"%>
+          <%= link_to "注册",url(:account,:register),:class=>"navbar-link",:class=>"ight-start"%>
         <% end %>
         </p>
 
@@ -27,9 +34,9 @@
             <button type="submit" class="btn"><i class="icon-search"></i></button>
           </div>
         <% end %>
-      </div>
+      </div><!--/.nav-collapse -->
     </div>
-  </div><!-- /.navbar -->
+  </div>
 </div>
 
 <div class="loading_box" id="loading">

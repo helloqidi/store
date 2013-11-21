@@ -50,7 +50,7 @@
             <%end%>
           </a>
           <p>
-          <%=link_to recommend.title,url(:recommend,:show,:id=>recommend.id),:target=>"_blank"%><span class="orange"><%=recommend.sub_title%></span>
+          <%=link_to recommend.title,url(:recommend,:show,:id=>recommend.id),:target=>"_blank",:class=>"dark-start"%><span class="orange"><%=recommend.sub_title%></span>
           </p>
           <p>
           <strong><%=recommend.user_name%>:</strong><%=truncate(recommend.desc_text, :length => 50)%>
