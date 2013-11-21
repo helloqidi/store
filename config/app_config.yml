@@ -22,6 +22,7 @@ development: &default
 production:
   <<: *default
   domain: "http://www.helloqidi.com"
+  domain_img: "http://www.helloqidi.com/images"
   domain_css: "http://static.helloqidi.com/stylesheets"
   domain_js: "http://static.helloqidi.com/javascripts"
   category_other_id: 97
@@ -34,5 +35,6 @@ production:
 test: 
   <<: *default
   domain: "http://www.helloqidi.com"
+  domain_img: "http://www.helloqidi.com/images"
   domain_css: "http://www.helloqidi.com/stylesheets"
   domain_js: "http://www.helloqidi.com/javascripts"
