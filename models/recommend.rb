@@ -87,7 +87,7 @@ class Recommend < ActiveRecord::Base
   end
   
   def create_linklab
-    linklab = self.build_linklab(:click_cnt,0)
+    linklab = self.build_linklab(:click_cnt=>0)
     linklab.save
   end
 

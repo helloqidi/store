@@ -1,0 +1,21 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>标题</th>
+      <th>标签</th>
+      <th>商家</th>
+      <th>次数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @linklabs.each do |linklab| %>
+      <tr>
+        <td><%= link_to linklab.recommend.title,Store::App.url(:recommend,:show,:id=>linklab.recommend_id),:target=>"_blank" %></td>
+        <td><%= linklab.recommend.tags %></td>
+        <td><%= linklab.recommend.store_name %></td>
+        <td><%= linklab.click_cnt %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= (will_paginate @linklabs).to_s.html_safe %>

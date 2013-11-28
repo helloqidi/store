@@ -6,6 +6,7 @@
       <li class="<%=css_active?(@css_recommend_admin)%>"><%= link_to "推荐管理", url(:recommend, :list)%></li>
       <li class="<%=css_active?(@css_user_admin)%>"><%=link_to "会员管理",url(:user,:list)%></li>
       <li class="<%=css_active?(@css_free_block_admin)%>"><%=link_to "区块管理",url(:free_block,:list)%></li>
+      <li class="<%=css_active?(@css_linklab_admin)%>"><%=link_to "点击排行",url(:linklab,:list)%></li>
       <%if system?%>
         <li class="<%=css_active?(@css_task)%>"><%=link_to "任务管理",url(:task,:list)%></li>
       <%end%>
