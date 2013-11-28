@@ -45,4 +45,25 @@ Store::App.controllers :home do
     render "home/found_list"
   end
 
+  #链接跳转
+  get :go, :with => :id do
+    redirect url(:home,:recommend) if params[:id].blank?
+    linklab= Linklab.find(params[:id])
+
+    if linklab.blank?
+      flash[:error]="您访问的页面不存在哦"
+      redirect url(:home,:recommend)
+    end
+    
+    recommend = linklab.recommend
+    if recommend.blank? || recommend.store_url.blank?
+      flash[:error]="您访问的页面不存在哦"
+      redirect url(:home,:recommend)
+    end
+
+    #递增1
+    linklab.increment!(:click_cnt,1)
+    redirect url(recommend.store_url)
+  end
+
 end

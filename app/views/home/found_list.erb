@@ -56,7 +56,7 @@
           <strong><%=recommend.user_name%>:</strong><%=truncate(recommend.desc_text, :length => 50)%>
           </p>
           <p style="padding-left:120px;">
-          <%=link_to "直达链接",recommend.store_url,:target=>"_blank"%>
+          <%=link_to "直达链接",recommend.go_url,:target=>"_blank"%>
           </p>
         </div>
       <%end%>

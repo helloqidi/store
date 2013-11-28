@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 21) do
+ActiveRecord::Schema.define(:version => 23) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",                    :null => false
@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(:version => 21) do
     t.integer  "status",      :limit => 3,        :null => false
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
+  end
+
+  create_table "linklabs", :force => true do |t|
+    t.integer  "recommend_id", :null => false
+    t.integer  "click_cnt"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "photos", :force => true do |t|
@@ -81,6 +88,7 @@ ActiveRecord::Schema.define(:version => 21) do
     t.string   "swaping_site"
     t.string   "swaping_url"
     t.string   "user_name"
+    t.integer  "linklab_id"
   end
 
   create_table "users", :force => true do |t|

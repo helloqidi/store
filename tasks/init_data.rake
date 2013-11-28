@@ -14,4 +14,14 @@ namespace :init_data do
 
   end
 
+
+  desc "add linklab record for old recommend"
+  task :create_linklab_for_recommend do
+    Recommend.all.each do |recommend|
+      next if recommend.linklab.present?
+      linklab = recommend.build_linklab(:click_cnt,0)
+      linklab.save
+    end
+  end
+
 end

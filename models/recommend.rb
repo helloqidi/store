@@ -16,7 +16,7 @@ class Recommend < ActiveRecord::Base
   has_many :photos,     :foreign_key => "related_id",   dependent: :destroy
   belongs_to :user,     :foreign_key => "user_id"
   belongs_to :category, :foreign_key => "category_id"
-
+  has_one :linklab,     :foreign_key => "recommend_id"
 
   ##常量
   STATUS={
@@ -45,6 +45,7 @@ class Recommend < ActiveRecord::Base
   ##回调
   before_validation :default_values
   before_save :save_desc_text
+  after_create :create_linklab
 
   ##过滤
   scope :draft, -> { where(status: STATUS[:draft]) }
@@ -64,6 +65,17 @@ class Recommend < ActiveRecord::Base
     false
   end
 
+  #跳转地址
+  def go_url
+    linklab = self.linklab
+    if linklab.present?
+      Store::App.url(:home, :go, :id => linklab.id)
+    else
+      self.store_url
+    end
+  end
+
+
   private
   def default_values
     self.status ||= STATUS[:draft]
@@ -74,4 +86,9 @@ class Recommend < ActiveRecord::Base
     self.desc_text = self.description.gsub(/<\/?[^>]*>/, "")
   end
   
+  def create_linklab
+    linklab = self.build_linklab(:click_cnt,0)
+    linklab.save
+  end
+
 end
