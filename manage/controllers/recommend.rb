@@ -32,7 +32,7 @@ Store::Manage.controllers :recommend do
   end
 
   #新建保存
-  post :create do
+  post :create, :csrf_protection => false do
     logger.debug(params)
     params[:recommend][:user_id] = current_user.id
     logger.debug("--------#{current_user.id}")
@@ -73,7 +73,7 @@ Store::Manage.controllers :recommend do
   end
 
   #编辑保存
-  put :update,:with=>:id do
+  put :update,:with=>:id, :csrf_protection => false do
     logger.debug(params)
     
     @recommend=Recommend.find_by_id(params[:id])
