@@ -45,7 +45,7 @@
         <td><%= check_box_tag "recommend[ids][]",:value=>recommend.id %></td>
         <td><%= link_to recommend.title,Store::App.url(:recommend,:show,:id=>recommend.id),:target=>"_blank" %></td>
         <td><%= recommend.store_name%></td>
-        <td><%= recommend.category.name%></td>
+        <td><%= recommend.category.name if recommend.category.present? %></td>
         <td><%= format_time(recommend.created_at)%></td>
         <td class="recommend-operate">
           <%if recommend.published?%>
